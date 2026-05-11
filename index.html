@@ -1,8 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DCBD • Controlled FSA CBD</title>
+
+<meta name="description" content="UK botanical wellness brand • Controlled FSA CBD • Hemp derived cannabinoids • DaCoFFeezDank">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#040404;
+color:white;
+overflow-x:hidden;
+background:
+radial-gradient(circle at top,#1c1c1c 0%,#050505 60%);
+}
+
+/* GRAIN */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.08;
+pointer-events:none;
+z-index:999;
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+font-size:14px;
+font-weight:900;
+letter-spacing:5px;
+color:#00d0ff;
+}
+
+nav ul{
+display:flex;
+gap:24px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:13px;
+opacity:0.85;
+}
+
+nav a:hover{
+color:#00d0ff;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:140px 30px 100px;
+position:relative;
+}
+
+.hero-content{
+max-width:950px;
+z-index:2;
+}
+
+.tag{
+font-size:12px;
+letter-spacing:4px;
+text-transform:uppercase;
+color:#00d0ff;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:clamp(4rem,10vw,8rem);
+line-height:0.9;
+text-transform:uppercase;
+font-weight:900;
+margin-bottom:30px;
+
+background:linear-gradient(90deg,#00d0ff,#ff00d4,#7dff00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 20px rgba(0,208,255,0.35);
+}
+
+.hero p{
+font-size:1.1rem;
+line-height:1.8;
+max-width:700px;
+color:#d6d6d6;
+margin-bottom:40px;
+}
+
+/* BUTTONS */
+
+.buttons{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.btn{
+padding:18px 32px;
+border-radius:100px;
+text-decoration:none;
+font-weight:800;
+font-size:14px;
+transition:0.3s;
+letter-spacing:1px;
+}
+
+.primary{
+background:#00d0ff;
+color:black;
+box-shadow:0 0 30px rgba(0,208,255,0.4);
+}
+
+.primary:hover{
+transform:translateY(-4px) scale(1.03);
+}
+
+.secondary{
+border:1px solid rgba(255,255,255,0.15);
+color:white;
+}
+
+.secondary:hover{
+background:white;
+color:black;
+}
+
+/* HERO BG */
+
+.hero-art{
+position:absolute;
+right:-120px;
+top:120px;
+width:650px;
+opacity:0.16;
+filter:blur(1px);
+}
+
+/* SECTIONS */
+
+section{
+padding:90px 30px;
+}
+
+.section-title{
+font-size:2.3rem;
+margin-bottom:40px;
+text-transform:uppercase;
+}
+
+/* PRODUCT GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:28px;
+}
+
+/* LIQUID CARDS */
+
+.card{
+position:relative;
+overflow:hidden;
+border-radius:30px;
+background:#0a0a0a;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#00d0ff;
+box-shadow:0 0 40px rgba(0,208,255,0.15);
+}
+
+.card img{
+width:100%;
+height:340px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.card:hover img{
+transform:scale(1.08);
+filter:saturate(1.2);
+}
+
+.card-content{
+padding:24px;
+}
+
+.stock{
+display:inline-block;
+padding:8px 14px;
+border-radius:100px;
+background:#00d0ff;
+color:black;
+font-size:11px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.card h3{
+font-size:1.7rem;
+margin-bottom:14px;
+}
+
+.card p{
+line-height:1.7;
+color:#c9c9c9;
+margin-bottom:24px;
+}
+
+.order-btn{
+display:inline-block;
+padding:14px 22px;
+background:#00d0ff;
+border-radius:100px;
+color:black;
+font-weight:800;
+text-decoration:none;
+}
+
+/* STORY */
+
+.story{
+max-width:950px;
+}
+
+.story h2{
+font-size:2.5rem;
+margin-bottom:24px;
+text-transform:uppercase;
+}
+
+.story p{
+line-height:1.9;
+color:#d0d0d0;
+}
+
+/* DISCLAIMER */
+
+.notice{
+margin:0 30px 100px;
+padding:30px;
+border-radius:30px;
+background:#0b0b0b;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.notice h3{
+margin-bottom:20px;
+color:#00d0ff;
+}
+
+.notice p{
+line-height:1.8;
+color:#cfcfcf;
+}
+
+/* FOOTER */
+
+footer{
+padding:50px 30px;
+border-top:1px solid rgba(255,255,255,0.06);
+display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
 gap:20px;
 font-size:14px;
-color:#888;
+color:#9b9b9b;
+}
+
+/* FLOATING WHATSAPP */
+
+.whatsapp-float{
+position:fixed;
+bottom:24px;
+right:24px;
+background:#25D366;
+color:white;
+padding:18px 24px;
+border-radius:100px;
+font-weight:900;
+text-decoration:none;
+z-index:9999;
+box-shadow:0 0 30px rgba(37,211,102,0.45);
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
 }
 
 /* MOBILE */
@@ -14,8 +342,12 @@ display:none;
 }
 
 .hero{
-padding-top:140px;
-}is 
+padding-top:160px;
+}
+
+.hero-art{
+display:none;
+}
 
 .hero h1{
 font-size:4rem;
@@ -23,7 +355,6 @@ font-size:4rem;
 
 .buttons{
 flex-direction:column;
-align-items:flex-start;
 }
 
 .btn{
@@ -39,39 +370,46 @@ text-align:center;
 <body>
 
 <nav>
-<div class="logo">DCBD</div>
+
+<div class="logo">
+DCBD
+</div>
 
 <ul>
 <li><a href="#products">Products</a></li>
+<li><a href="#drops">Drops</a></li>
 <li><a href="#story">Story</a></li>
-<li><a href="#contact">Contact</a></li>
 </ul>
+
 </nav>
 
 <section class="hero">
 
+<img class="hero-art" src="https://i.imgur.com/W7DjV7v.jpeg">
+
 <div class="hero-content">
 
 <div class="tag">
-DaCoFFeezDank Presents
+CONTROLLED FSA CBD • HEMP DERIVED CANNABINOIDS
 </div>
 
 <h1>
-Botanical Wellness With Original Underground Artwork.
+PLUGGD COFFEE<br>& DANK
 </h1>
 
 <p>
-Independent UK herbal wellness brand inspired by survival, creativity and electric underground culture. Limited botanical drops. Direct customer ordering.
+Independent UK botanical wellness brand blending controlled FSA CBD, hemp tea extracts, futuristic underground artwork and direct-to-customer culture.
+Built from survival, creativity and original street energy.
 </p>
 
 <div class="buttons">
 
-<a class="btn primary" href="https://wa.me/447000000000">
-ORDER DIRECT
+<a class="btn primary" href="https://wa.me/447763383729">
+TALK TO THE DANK PLUG
 </a>
 
 <a class="btn secondary" href="#products">
-VIEW PRODUCTS
+VIEW DROPS
 </a>
 
 </div>
@@ -80,72 +418,111 @@ VIEW PRODUCTS
 
 </section>
 
-<section class="products" id="products">
+<section id="products">
 
 <h2 class="section-title">
-Featured Drops
+FEATURED BOTANICAL DROPS
 </h2>
 
 <div class="grid">
 
 <div class="card">
 
-<div class="stock">
-25G AVAILABLE
-</div>
+<img src="https://i.imgur.com/7Lg4Q6l.jpeg">
 
-<h3>
-CBD Herbal Tea Blend
-</h3>
-
-<p>
-Small batch botanical tea inspired by underground wellness culture and premium presentation.
-</p>
-
-<a class="order-btn" href="https://wa.me/447000000000">
-Order Now
-</a>
-
-</div>
-
-<div class="card">
+<div class="card-content">
 
 <div class="stock">
 LIMITED DROP
 </div>
 
 <h3>
-Signature Botanical Extract
+Blue Zushi Extract
 </h3>
 
 <p>
-Electric blue visual identity with futuristic gritty branding and handcrafted energy.
+Premium hemp-derived botanical extract with terpene-rich flavour profile and futuristic visual identity.
 </p>
 
-<a class="order-btn" href="https://wa.me/447000000000">
-Order Now
+<a class="order-btn" href="https://wa.me/447763383729">
+ORDER DIRECT
 </a>
 
+</div>
 </div>
 
 <div class="card">
 
+<img src="https://i.imgur.com/V74F6D8.jpeg">
+
+<div class="card-content">
+
 <div class="stock">
-ORIGINAL ARTWORK
+25G AVAILABLE
 </div>
 
 <h3>
-DCBD Visual Collection
+JungleBoyz Botanical
 </h3>
 
 <p>
-Street-inspired neon artwork fused into the identity of every independent release.
+Electric neon artwork fused with controlled CBD botanical culture and underground aesthetics.
 </p>
 
-<a class="order-btn" href="https://wa.me/447000000000">
-View Collection
+<a class="order-btn" href="https://wa.me/447763383729">
+MESSAGE NOW
 </a>
 
+</div>
+</div>
+
+<div class="card">
+
+<img src="https://i.imgur.com/J7M7o5F.jpeg">
+
+<div class="card-content">
+
+<div class="stock">
+FSA CONTROLLED
+</div>
+
+<h3>
+Hemp Tea Extract
+</h3>
+
+<p>
+Lab-tested hemp-derived tea extract presentation with bold gritty street-art packaging.
+</p>
+
+<a class="order-btn" href="https://wa.me/447763383729">
+ORDER DIRECT
+</a>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="drops">
+
+<h2 class="section-title">
+LATEST VISUALS
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://i.imgur.com/FZ7Lx8J.jpeg">
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/B4kGh8f.jpeg">
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/XfK2w4n.jpeg">
 </div>
 
 </div>
@@ -155,11 +532,11 @@ View Collection
 <section class="story" id="story">
 
 <h2>
-Born From Pain. Built Into A Brand.
+BORN FROM PAIN. BUILT INTO ART.
 </h2>
 
 <p>
-DCBD represents independent creativity, botanical culture and survival through expression. The project combines herbal wellness aesthetics with futuristic street-art visuals, underground influence and direct community connection.
+DaCoFFeezDank combines original underground visuals, controlled FSA CBD branding, hemp-derived cannabinoid culture and direct customer connection. Every release is inspired by survival, creativity and futuristic street energy.
 </p>
 
 </section>
@@ -167,26 +544,30 @@ DCBD represents independent creativity, botanical culture and survival through e
 <section class="notice">
 
 <h3>
-Responsible Use Notice
+RESPONSIBLE NOTICE
 </h3>
 
 <p>
-Adults only. This website does not provide medical advice. Nothing on this website is intended to diagnose, treat, cure or prevent disease. Product legality and compliance should always be checked before sale or distribution.
+Adults only. Hemp-derived products marketed as botanical tea extracts and collectible wellness products. Nothing on this website is intended as medical advice. Customers must check local regulations before ordering.
 </p>
 
 </section>
 
-<footer id="contact">
+<footer>
 
 <div>
-© 2026 DCBD / DaCoFFeezDank
+© 2026 DCBD • DaCoFFeezDank
 </div>
 
 <div>
-Instagram • WhatsApp • UK Independent Brand
+UK Independent Botanical Brand
 </div>
 
 </footer>
+
+<a class="whatsapp-float" href="https://wa.me/447763383729">
+TALK TO THE DANK PLUG
+</a>
 
 </body>
 </html>
