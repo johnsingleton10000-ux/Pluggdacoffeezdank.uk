@@ -3,571 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>DCBD • Controlled FSA CBD</title>
-
-<meta name="description" content="UK botanical wellness brand • Controlled FSA CBD • Hemp derived cannabinoids • DaCoFFeezDank">
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<title>DaCoFFeezDank • The Cannabinoid Tea Revolution</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
-body{
-font-family:'Montserrat',sans-serif;
-background:#040404;
-color:white;
-overflow-x:hidden;
-background:
-radial-gradient(circle at top,#1c1c1c 0%,#050505 60%);
-}
-
-/* GRAIN */
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-opacity:0.08;
-pointer-events:none;
-z-index:999;
-}
-
-/* NAV */
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-padding:20px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.logo{
-font-size:14px;
-font-weight:900;
-letter-spacing:5px;
-color:#00d0ff;
-}
-
-nav ul{
-display:flex;
-gap:24px;
-list-style:none;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-size:13px;
-opacity:0.85;
-}
-
-nav a:hover{
-color:#00d0ff;
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding:140px 30px 100px;
-position:relative;
-}
-
-.hero-content{
-max-width:950px;
-z-index:2;
-}
-
-.tag{
-font-size:12px;
-letter-spacing:4px;
-text-transform:uppercase;
-color:#00d0ff;
-margin-bottom:25px;
-}
-
-.hero h1{
-font-size:clamp(4rem,10vw,8rem);
-line-height:0.9;
-text-transform:uppercase;
-font-weight:900;
-margin-bottom:30px;
-
-background:linear-gradient(90deg,#00d0ff,#ff00d4,#7dff00);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-text-shadow:
-0 0 20px rgba(0,208,255,0.35);
-}
-
-.hero p{
-font-size:1.1rem;
-line-height:1.8;
-max-width:700px;
-color:#d6d6d6;
-margin-bottom:40px;
-}
-
-/* BUTTONS */
-
-.buttons{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-}
-
-.btn{
-padding:18px 32px;
-border-radius:100px;
-text-decoration:none;
-font-weight:800;
-font-size:14px;
-transition:0.3s;
-letter-spacing:1px;
-}
-
-.primary{
-background:#00d0ff;
-color:black;
-box-shadow:0 0 30px rgba(0,208,255,0.4);
-}
-
-.primary:hover{
-transform:translateY(-4px) scale(1.03);
-}
-
-.secondary{
-border:1px solid rgba(255,255,255,0.15);
-color:white;
-}
-
-.secondary:hover{
-background:white;
-color:black;
-}
-
-/* HERO BG */
-
-.hero-art{
-position:absolute;
-right:-120px;
-top:120px;
-width:650px;
-opacity:0.16;
-filter:blur(1px);
-}
-
-/* SECTIONS */
-
-section{
-padding:90px 30px;
-}
-
-.section-title{
-font-size:2.3rem;
-margin-bottom:40px;
-text-transform:uppercase;
-}
-
-/* PRODUCT GRID */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:28px;
-}
-
-/* LIQUID CARDS */
-
-.card{
-position:relative;
-overflow:hidden;
-border-radius:30px;
-background:#0a0a0a;
-border:1px solid rgba(255,255,255,0.08);
-transition:0.4s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-border-color:#00d0ff;
-box-shadow:0 0 40px rgba(0,208,255,0.15);
-}
-
-.card img{
-width:100%;
-height:340px;
-object-fit:cover;
-transition:0.5s;
-}
-
-.card:hover img{
-transform:scale(1.08);
-filter:saturate(1.2);
-}
-
-.card-content{
-padding:24px;
-}
-
-.stock{
-display:inline-block;
-padding:8px 14px;
-border-radius:100px;
-background:#00d0ff;
-color:black;
-font-size:11px;
-font-weight:800;
-margin-bottom:18px;
-}
-
-.card h3{
-font-size:1.7rem;
-margin-bottom:14px;
-}
-
-.card p{
-line-height:1.7;
-color:#c9c9c9;
-margin-bottom:24px;
-}
-
-.order-btn{
-display:inline-block;
-padding:14px 22px;
-background:#00d0ff;
-border-radius:100px;
-color:black;
-font-weight:800;
-text-decoration:none;
-}
-
-/* STORY */
-
-.story{
-max-width:950px;
-}
-
-.story h2{
-font-size:2.5rem;
-margin-bottom:24px;
-text-transform:uppercase;
-}
-
-.story p{
-line-height:1.9;
-color:#d0d0d0;
-}
-
-/* DISCLAIMER */
-
-.notice{
-margin:0 30px 100px;
-padding:30px;
-border-radius:30px;
-background:#0b0b0b;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.notice h3{
-margin-bottom:20px;
-color:#00d0ff;
-}
-
-.notice p{
-line-height:1.8;
-color:#cfcfcf;
-}
-
-/* FOOTER */
-
-footer{
-padding:50px 30px;
-border-top:1px solid rgba(255,255,255,0.06);
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:20px;
-font-size:14px;
-color:#9b9b9b;
-}
-
-/* FLOATING WHATSAPP */
-
-.whatsapp-float{
-position:fixed;
-bottom:24px;
-right:24px;
-background:#25D366;
-color:white;
-padding:18px 24px;
-border-radius:100px;
-font-weight:900;
-text-decoration:none;
-z-index:9999;
-box-shadow:0 0 30px rgba(37,211,102,0.45);
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-nav ul{
-display:none;
-}
-
-.hero{
-padding-top:160px;
-}
-
-.hero-art{
-display:none;
-}
-
-.hero h1{
-font-size:4rem;
-}
-
-.buttons{
-flex-direction:column;
-}
-
-.btn{
-width:100%;
-text-align:center;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{background:#030303;color:white;font-family:Arial Black,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-40%;background:radial-gradient(circle,#00f5ff55,transparent 20%),radial-gradient(circle at 80% 20%,#ff00cc55,transparent 25%),radial-gradient(circle at 30% 80%,#9dff0055,transparent 25%);filter:blur(50px);animation:flow 12s infinite alternate;z-index:-5}
+@keyframes flow{to{transform:rotate(12deg) scale(1.25)}}
+
+nav{position:fixed;top:0;width:100%;z-index:99;padding:18px 22px;display:flex;justify-content:space-between;background:#000b;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff22}
+.logo{color:#00f5ff;text-shadow:0 0 18px #00f5ff;font-size:22px}
+nav a{color:white;text-decoration:none;margin-left:12px;font-size:12px}
+
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 20px 70px;position:relative}
+.hero:after{content:"";position:absolute;inset:0;background:url('assets/art1.jpg') center/cover;opacity:.18;mix-blend-mode:screen;z-index:-2}
+h1{font-size:clamp(3rem,13vw,9rem);line-height:.78;text-transform:uppercase;text-shadow:0 0 20px #00f5ff,0 0 45px #ff00cc}
+.sub{max-width:900px;margin:25px auto;font-family:Arial,sans-serif;font-size:18px;line-height:1.7;color:#eee}
+.btn{display:inline-block;padding:18px 28px;border-radius:18px;background:#9dff00;color:#050505;text-decoration:none;font-weight:900;margin:8px;box-shadow:0 0 28px #9dff00;transition:.25s}
+.btn:hover{transform:scale(1.05)}
+.pink{background:#ff00cc;color:white;box-shadow:0 0 28px #ff00cc}
+.blue{background:#00f5ff;color:black;box-shadow:0 0 28px #00f5ff}
+
+.section{padding:90px 22px}
+.title{font-size:clamp(2.3rem,8vw,5rem);text-transform:uppercase;margin-bottom:35px;color:#9dff00;text-shadow:0 0 20px #9dff00}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px}
+.card{background:#070707dd;border:1px solid #ffffff22;border-radius:30px;overflow:hidden;box-shadow:0 0 30px #00f5ff22;animation:morph 8s infinite alternate}
+@keyframes morph{to{border-radius:55% 45% 35% 65%/45% 60% 40% 55%;transform:translateY(-8px)}}
+.card img{width:100%;height:280px;object-fit:cover;filter:saturate(1.25) contrast(1.1)}
+.inside{padding:24px}
+.badge{display:inline-block;background:#ff00cc;padding:8px 12px;border-radius:999px;font-size:11px;margin-bottom:12px}
+.card h3{font-size:28px;color:#00f5ff;text-transform:uppercase}
+.card p{font-family:Arial,sans-serif;line-height:1.6;color:#ddd;margin:14px 0}
+.price{color:#9dff00;font-size:22px;margin-bottom:15px}
+
+.story{background:#000b;border:2px solid #00f5ff;border-radius:35px;padding:35px;box-shadow:0 0 40px #00f5ff33}
+.story p{font-family:Arial,sans-serif;font-size:18px;line-height:1.8;color:#eee}
+
+.member{background:linear-gradient(135deg,#130018,#001b22,#111);border:2px solid #9dff00;border-radius:35px;padding:35px;box-shadow:0 0 45px #9dff0044}
+.member h2{font-size:clamp(2.6rem,9vw,6rem);color:#ff00cc;text-transform:uppercase}
+.member ul{font-family:Arial,sans-serif;font-size:20px;line-height:2;list-style:none;margin:22px 0}
+
+.checkout{max-width:850px;margin:auto;background:#000d;border:1px solid #00f5ff55;border-radius:30px;padding:28px}
+input,textarea{width:100%;padding:16px;margin:10px 0;background:#090909;color:white;border:1px solid #ffffff33;border-radius:14px;font-size:16px}
+button{border:none;cursor:pointer}
+
+.float{position:fixed;right:18px;bottom:18px;z-index:999;background:#25D366;color:white;padding:16px 22px;border-radius:999px;text-decoration:none;font-weight:900;box-shadow:0 0 30px #25D366;animation:pulse 2s infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+footer{text-align:center;padding:50px 20px;color:#aaa;font-family:Arial,sans-serif}
 </style>
 </head>
 
 <body>
 
 <nav>
-
-<div class="logo">
-DCBD
+<div class="logo">DaCoFFeezDank</div>
+<div>
+<a href="#vault">Vault</a>
+<a href="#founders">Founders</a>
+<a href="#story">Story</a>
+<a href="#checkout">WhatsApp</a>
 </div>
-
-<ul>
-<li><a href="#products">Products</a></li>
-<li><a href="#drops">Drops</a></li>
-<li><a href="#story">Story</a></li>
-</ul>
-
 </nav>
 
 <section class="hero">
-
-<img class="hero-art" src="https://i.imgur.com/W7DjV7v.jpeg">
-
-<div class="hero-content">
-
-<div class="tag">
-CONTROLLED FSA CBD • HEMP DERIVED CANNABINOIDS
+<div>
+<h1>The Cannabinoid Tea Revolution</h1>
+<p class="sub">Futuristic hemp lab. Psychedelic street art. FSA-aligned CBD / CBG botanical tea extract culture. Built from cerebral palsy, resilience, creativity and community.</p>
+<a class="btn blue" href="#vault">ENTER THE VAULT</a>
+<a class="btn pink" href="https://wa.me/447763383729?text=🚀%20Welcome%20to%20the%20DaCoFFeezDank%20Revolution.%20I%20want%20to%20enter%20the%20vault." target="_blank">TALK TO DANK PLUG</a>
 </div>
-
-<h1>
-PLUGGD COFFEE<br>& DANK
-</h1>
-
-<p>
-Independent UK botanical wellness brand blending controlled FSA CBD, hemp tea extracts, futuristic underground artwork and direct-to-customer culture.
-Built from survival, creativity and original street energy.
-</p>
-
-<div class="buttons">
-
-<a class="btn primary" href="https://wa.me/447763383729">
-TALK TO THE DANK PLUG
-</a>
-
-<a class="btn secondary" href="#products">
-VIEW DROPS
-</a>
-
-</div>
-
-</div>
-
 </section>
 
-<section id="products">
-
-<h2 class="section-title">
-FEATURED BOTANICAL DROPS
-</h2>
-
+<section class="section" id="vault">
+<h2 class="title">Liquid Extract Vault</h2>
 <div class="grid">
 
 <div class="card">
-
-<img src="https://i.imgur.com/7Lg4Q6l.jpeg">
-
-<div class="card-content">
-
-<div class="stock">
-LIMITED DROP
-</div>
-
-<h3>
-Blue Zushi Extract
-</h3>
-
-<p>
-Premium hemp-derived botanical extract with terpene-rich flavour profile and futuristic visual identity.
-</p>
-
-<a class="order-btn" href="https://wa.me/447763383729">
-ORDER DIRECT
-</a>
-
+<img src="assets/art2.jpg">
+<div class="inside">
+<span class="badge">BOTANICAL TEA EXTRACT</span>
+<h3>Afghan Pie</h3>
+<p>Hemp-derived CBD / CBG profile. Creamy, earthy, vanilla notes. Lab-style street art drop.</p>
+<div class="price">From £12</div>
+<a class="btn" href="https://wa.me/447763383729?text=Hi%20DNK%20Plug%2C%20I%20want%20info%20on%20Afghan%20Pie%20Botanical%20Tea%20Extract." target="_blank">TALK TO DANK PLUG</a>
 </div>
 </div>
 
 <div class="card">
-
-<img src="https://i.imgur.com/V74F6D8.jpeg">
-
-<div class="card-content">
-
-<div class="stock">
-25G AVAILABLE
-</div>
-
-<h3>
-JungleBoyz Botanical
-</h3>
-
-<p>
-Electric neon artwork fused with controlled CBD botanical culture and underground aesthetics.
-</p>
-
-<a class="order-btn" href="https://wa.me/447763383729">
-MESSAGE NOW
-</a>
-
+<img src="assets/art3.jpg">
+<div class="inside">
+<span class="badge">CBD / CBG BLEND</span>
+<h3>Blue Dream</h3>
+<p>Berry, citrus and pine terpene universe. Psychedelic lab-inspired hemp tea extract.</p>
+<div class="price">From £15</div>
+<a class="btn" href="https://wa.me/447763383729?text=Hi%20DNK%20Plug%2C%20I%20want%20info%20on%20Blue%20Dream%20CBD%20CBG%20Blend." target="_blank">TALK TO DANK PLUG</a>
 </div>
 </div>
 
 <div class="card">
-
-<img src="https://i.imgur.com/J7M7o5F.jpeg">
-
-<div class="card-content">
-
-<div class="stock">
-FSA CONTROLLED
+<img src="assets/art4.jpg">
+<div class="inside">
+<span class="badge">PREMIUM COFFEE</span>
+<h3>Pluggd House Blend</h3>
+<p>Rich, nutty, smooth roast. Coffee culture fused with the DCBD street-lab universe.</p>
+<div class="price">£8.99 — £24.99</div>
+<a class="btn" href="https://wa.me/447763383729?text=Hi%20DNK%20Plug%2C%20I%20want%20Pluggd%20House%20Blend%20coffee." target="_blank">TALK TO DANK PLUG</a>
+</div>
 </div>
 
-<h3>
-Hemp Tea Extract
-</h3>
-
-<p>
-Lab-tested hemp-derived tea extract presentation with bold gritty street-art packaging.
-</p>
-
-<a class="order-btn" href="https://wa.me/447763383729">
-ORDER DIRECT
-</a>
-
+<div class="card">
+<img src="assets/art5.jpg">
+<div class="inside">
+<span class="badge">GOODIES</span>
+<h3>Caps & Art Drops</h3>
+<p>Limited hats, stickers, wall art and founder-only collectible drops.</p>
+<div class="price">Vault Access</div>
+<a class="btn pink" href="https://wa.me/447763383729?text=Hi%20DNK%20Plug%2C%20I%20want%20caps%2C%20art%20and%20goodies." target="_blank">UNLOCK</a>
 </div>
 </div>
 
 </div>
-
 </section>
 
-<section id="drops">
-
-<h2 class="section-title">
-LATEST VISUALS
-</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="https://i.imgur.com/FZ7Lx8J.jpeg">
+<section class="section" id="founders">
+<div class="member">
+<h2>The Founders</h2>
+<ul>
+<li>👑 Only 420 members allowed</li>
+<li>🔥 £19.99 every 2 weeks</li>
+<li>⚡ 10% off orders over £50</li>
+<li>🎁 2g botanical bonus on qualifying orders where available</li>
+<li>💬 Private WhatsApp group: “The Founders”</li>
+<li>🧬 Founder names: Castro, Che, Afghan Saint, Jungle Founder, Blue Zushi General</li>
+</ul>
+<a class="btn pink" href="https://wa.me/447763383729?text=👑%20Welcome%20me%20to%20THE%20FOUNDERS.%20I%20want%20the%20%C2%A319.99%20membership%20and%20to%20join%20the%20DaCoFFeezDank%20Revolution." target="_blank">JOIN THE FOUNDERS</a>
 </div>
-
-<div class="card">
-<img src="https://i.imgur.com/B4kGh8f.jpeg">
-</div>
-
-<div class="card">
-<img src="https://i.imgur.com/XfK2w4n.jpeg">
-</div>
-
-</div>
-
 </section>
 
-<section class="story" id="story">
-
-<h2>
-BORN FROM PAIN. BUILT INTO ART.
-</h2>
-
-<p>
-DaCoFFeezDank combines original underground visuals, controlled FSA CBD branding, hemp-derived cannabinoid culture and direct customer connection. Every release is inspired by survival, creativity and futuristic street energy.
-</p>
-
+<section class="section" id="story">
+<h2 class="title">Founder Story</h2>
+<div class="story">
+<p>DaCoFFeezDank was built through cerebral palsy, pain, resilience and creativity. This is not corporate wellness. This is a UK underground movement turning struggle into colour, community, coffee, hemp-derived botanical extracts and futuristic street art.</p>
+<br>
+<p>The mission is simple: build a space where people feel seen, welcomed and part of something different — the cannabinoid tea revolution.</p>
+</div>
 </section>
 
-<section class="notice">
-
-<h3>
-RESPONSIBLE NOTICE
-</h3>
-
-<p>
-Adults only. Hemp-derived products marketed as botanical tea extracts and collectible wellness products. Nothing on this website is intended as medical advice. Customers must check local regulations before ordering.
-</p>
-
+<section class="section" id="checkout">
+<h2 class="title">WhatsApp Portal</h2>
+<div class="checkout">
+<input id="name" placeholder="Your name">
+<input id="interest" placeholder="Product / membership / coffee / goodies">
+<textarea id="notes" placeholder="Tell DNK Plug what you want"></textarea>
+<button class="btn blue" onclick="sendWA()">TALK TO DANK PLUG</button>
+</div>
 </section>
 
 <footer>
-
-<div>
-© 2026 DCBD • DaCoFFeezDank
-</div>
-
-<div>
-UK Independent Botanical Brand
-</div>
-
+FSA-aligned hemp wellness • CBD / CBG botanical tea extracts • Coffee • Art • Community • 18+
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/447763383729">
-TALK TO THE DANK PLUG
-</a>
+<a class="float" href="https://wa.me/447763383729?text=🚀%20Welcome%20to%20the%20DaCoFFeezDank%20Revolution.%20I%20want%20to%20enter%20the%20vault." target="_blank">TALK TO DANK PLUG</a>
+
+<script>
+function sendWA(){
+const name=document.getElementById("name").value || "New Founder";
+const interest=document.getElementById("interest").value || "The Vault";
+const notes=document.getElementById("notes").value || "I want to know what is available in my area.";
+const msg=`🚀 Welcome to the DaCoFFeezDank Revolution.%0A%0AName: ${name}%0AInterest: ${interest}%0ANotes: ${notes}%0A%0AI want to talk to DNK Plug and enter the vault.`;
+window.open("https://wa.me/447763383729?text="+encodeURIComponent(msg),"_blank");
+}
+</script>
 
 </body>
 </html>
