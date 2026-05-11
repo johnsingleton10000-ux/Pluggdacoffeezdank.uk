@@ -1,76 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DCBD • DaCoFFeezDank</title>
-  <meta name="description" content="DCBD DaCoFFeezDank independent UK botanical wellness brand." />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>DCBD • DaCoFFeezDank</title>
+
+<meta name="description" content="Independent UK botanical wellness brand with original underground artwork." />
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#050505;
+color:white;
+overflow-x:hidden;
+background:
+radial-gradient(circle at top, rgba(0,170,255,0.25), transparent 35%),
+linear-gradient(to bottom,#050505,#0b0b0b);
+}
+
+/* GRAIN OVERLAY */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.07;
+pointer-events:none;
+z-index:999;
+}
+
+/* NAV */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:24px 30px;
+position:fixed;
+width:100%;
+top:0;
+z-index:100;
+backdrop-filter:blur(12px);
+background:rgba(0,0,0,0.45);
+border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.logo{
+font-size:14px;
+font-weight:900;
+letter-spacing:5px;
+color:#19b5ff;
+}
+
+nav ul{
+display:flex;
+gap:24px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+opacity:0.8;
+transition:0.3s;
+}
+
+nav a:hover{
+opacity:1;
+color:#19b5ff;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:120px 30px 60px;
+position:relative;
+}
+
+.hero-content{
+max-width:950px;
+}
+
+.tag{
+font-size:12px;
+letter-spacing:5px;
+color:#19b5ff;
+margin-bottom:25px;
+text-transform:uppercase;
+}
+
+.hero h1{
+font-size:clamp(3.5rem,10vw,8rem);
+line-height:0.9;
+font-weight:900;
+text-transform:uppercase;
+margin-bottom:30px;
+text-shadow:
+0 0 12px rgba(0,170,255,0.6),
+0 0 30px rgba(0,170,255,0.35);
+}
+
+.hero p{
+font-size:1.15rem;
+max-width:700px;
+line-height:1.7;
+color:#d5d5d5;
+margin-bottom:40px;
+}
+
+/* BUTTONS */
+
+.buttons{
+display:flex;
+flex-wrap:wrap;
+gap:18px;
+}
+
+.btn{
+padding:18px 30px;
+border-radius:100px;
+font-weight:700;
+text-decoration:none;
+transition:0.3s;
+font-size:14px;
+letter-spacing:1px;
+}
+
+.primary{
+background:#0db7ff;
+color:black;
+box-shadow:0 0 25px rgba(13,183,255,0.45);
+}
+
+.primary:hover{
+transform:translateY(-2px);
+}
+
+.secondary{
+border:1px solid rgba(13,183,255,0.6);
+color:#19b5ff;
+}
+
+.secondary:hover{
+background:#19b5ff;
+color:black;
+}
+
+/* PRODUCTS */
+
+.products{
+padding:90px 30px;
+}
+
+.section-title{
+font-size:2rem;
+margin-bottom:40px;
+text-transform:uppercase;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;
+}
+
+.card{
+background:linear-gradient(180deg,#111,#0b0b0b);
+border:1px solid rgba(0,170,255,0.18);
+padding:28px;
+border-radius:24px;
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-4px);
+border-color:#19b5ff;
+box-shadow:0 0 25px rgba(0,170,255,0.12);
+}
+
+.stock{
+display:inline-block;
+font-size:11px;
+padding:7px 12px;
+border-radius:100px;
+background:#0db7ff;
+color:black;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.card h3{
+font-size:1.6rem;
+margin-bottom:16px;
+}
+
+.card p{
+line-height:1.7;
+color:#c9c9c9;
+margin-bottom:24px;
+}
+
+.order-btn{
+display:inline-block;
+padding:14px 20px;
+border-radius:100px;
+background:#19b5ff;
+color:black;
+font-weight:700;
+text-decoration:none;
+}
+
+/* STORY */
+
+.story{
+padding:90px 30px;
+max-width:950px;
+}
+
+.story h2{
+font-size:2.5rem;
+margin-bottom:25px;
+text-transform:uppercase;
+}
+
+.story p{
+line-height:1.9;
+font-size:1.05rem;
+color:#d0d0d0;
+}
+
+/* NOTICE */
+
+.notice{
+margin:40px 30px 100px;
+padding:30px;
+border:1px solid rgba(255,255,255,0.08);
+border-radius:24px;
+background:#0a0a0a;
+}
+
+.notice h3{
+margin-bottom:18px;
+color:#19b5ff;
+}
+
+.notice p{
+line-height:1.8;
+color:#c8c8c8;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px 30px;
+border-top:1px solid rgba(255,255,255,0.05);
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+font-size:14px;
+color:#888;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav ul{
+display:none;
+}
+
+.hero{
+padding-top:140px;
+}
+
+.hero h1{
+font-size:4rem;
+}
+
+.buttons{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.btn{
+width:100%;
+text-align:center;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-  <div class="noise"></div>
-  <header>
-    <strong>DCBD</strong>
-    <nav>
-      <a href="#products">Products</a>
-      <a href="#story">Story</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <p class="tag">DaCoFFeezDank presents</p>
-      <h1>Botanical wellness with original underground artwork.</h1>
-      <p>Independent UK brand. Electric blue style. Limited batch drops. Direct customer enquiry.</p>
-      <a class="button" href="#products">View products</a>
-    </section>
+<nav>
+<div class="logo">DCBD</div>
 
-    <section id="products" class="section">
-      <h2>Featured Drops</h2>
-      <div class="grid">
-        <article>
-          <span>25g available</span>
-          <h3>Herbal Extract Tea Blend</h3>
-          <p>Small batch botanical product. Adult-only enquiry.</p>
-          <a href="https://wa.me/" target="_blank">Order on WhatsApp</a>
-        </article>
-        <article>
-          <span>25g available</span>
-          <h3>Signature Wellness Drop</h3>
-          <p>Premium presentation with DCBD artwork energy.</p>
-          <a href="https://wa.me/" target="_blank">Order on WhatsApp</a>
-        </article>
-        <article>
-          <span>25g available</span>
-          <h3>Evening Botanical Blend</h3>
-          <p>Direct enquiry, limited stock, independent brand.</p>
-          <a href="https://wa.me/" target="_blank">Order on WhatsApp</a>
-        </article>
-      </div>
-    </section>
+<ul>
+<li><a href="#products">Products</a></li>
+<li><a href="#story">Story</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-    <section id="story" class="section story">
-      <h2>Born from pain. Built into a brand.</h2>
-      <p>DCBD is a bold independent wellness concept built around original visuals, grit, electric colour and honest storytelling.</p>
-    </section>
+<section class="hero">
 
-    <section class="section notice">
-      <h2>Responsible use notice</h2>
-      <p>Adults only. This website does not provide medical advice. Nothing here is intended to diagnose, treat, cure or prevent disease. Product legality and compliance must be checked before sale.</p>
-    </section>
+<div class="hero-content">
 
-    <section id="contact" class="section contact">
-      <h2>Contact DCBD</h2>
-      <p>Add your WhatsApp number next and this button will open a pre-filled order enquiry.</p>
-      <a class="button" href="https://wa.me/" target="_blank">Message on WhatsApp</a>
-    </section>
-  </main>
+<div class="tag">
+DaCoFFeezDank Presents
+</div>
 
-  <footer>
-    <p>© DCBD / DaCoFFeezDank</p>
-    <a href="terms.html">Terms</a>
-    <a href="privacy.html">Privacy</a>
-  </footer>
+<h1>
+Botanical Wellness With Original Underground Artwork.
+</h1>
+
+<p>
+Independent UK herbal wellness brand inspired by survival, creativity and electric underground culture. Limited botanical drops. Direct customer ordering.
+</p>
+
+<div class="buttons">
+
+<a class="btn primary" href="https://wa.me/447000000000">
+ORDER DIRECT
+</a>
+
+<a class="btn secondary" href="#products">
+VIEW PRODUCTS
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="products" id="products">
+
+<h2 class="section-title">
+Featured Drops
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="stock">
+25G AVAILABLE
+</div>
+
+<h3>
+CBD Herbal Tea Blend
+</h3>
+
+<p>
+Small batch botanical tea inspired by underground wellness culture and premium presentation.
+</p>
+
+<a class="order-btn" href="https://wa.me/447000000000">
+Order Now
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="stock">
+LIMITED DROP
+</div>
+
+<h3>
+Signature Botanical Extract
+</h3>
+
+<p>
+Electric blue visual identity with futuristic gritty branding and handcrafted energy.
+</p>
+
+<a class="order-btn" href="https://wa.me/447000000000">
+Order Now
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="stock">
+ORIGINAL ARTWORK
+</div>
+
+<h3>
+DCBD Visual Collection
+</h3>
+
+<p>
+Street-inspired neon artwork fused into the identity of every independent release.
+</p>
+
+<a class="order-btn" href="https://wa.me/447000000000">
+View Collection
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="story" id="story">
+
+<h2>
+Born From Pain. Built Into A Brand.
+</h2>
+
+<p>
+DCBD represents independent creativity, botanical culture and survival through expression. The project combines herbal wellness aesthetics with futuristic street-art visuals, underground influence and direct community connection.
+</p>
+
+</section>
+
+<section class="notice">
+
+<h3>
+Responsible Use Notice
+</h3>
+
+<p>
+Adults only. This website does not provide medical advice. Nothing on this website is intended to diagnose, treat, cure or prevent disease. Product legality and compliance should always be checked before sale or distribution.
+</p>
+
+</section>
+
+<footer id="contact">
+
+<div>
+© 2026 DCBD / DaCoFFeezDank
+</div>
+
+<div>
+Instagram • WhatsApp • UK Independent Brand
+</div>
+
+</footer>
+
 </body>
 </html>
