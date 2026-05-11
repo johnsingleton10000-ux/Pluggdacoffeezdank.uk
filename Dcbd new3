@@ -1,0 +1,351 @@
+p<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DaCoffeezDank • Controlled FSA CBD</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial Black,sans-serif;
+background:#030303;
+color:white;
+overflow-x:hidden;
+}
+
+/* LIQUID BACKGROUND */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, #ff00cc55, transparent 30%),
+radial-gradient(circle at 80% 30%, #00e5ff55, transparent 30%),
+radial-gradient(circle at 50% 90%, #7dff0055, transparent 30%);
+filter:blur(60px);
+animation:liquidMove 10s infinite alternate;
+z-index:-5;
+}
+
+@keyframes liquidMove{
+0%{
+transform:scale(1) rotate(0deg);
+}
+100%{
+transform:scale(1.2) rotate(6deg);
+}
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#000b;
+backdrop-filter:blur(12px);
+z-index:999;
+border-bottom:1px solid #ffffff22;
+}
+
+.logo{
+font-size:24px;
+color:#00e5ff;
+text-shadow:0 0 15px #00e5ff;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:18px;
+font-size:13px;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:120px 20px 80px;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:url('assets/art1.jpg') center/cover;
+opacity:.15;
+mix-blend-mode:screen;
+z-index:-2;
+}
+
+.hero h1{
+font-size:clamp(3rem,12vw,8rem);
+line-height:.85;
+text-transform:uppercase;
+text-shadow:
+0 0 15px #00e5ff,
+0 0 35px #ff00cc;
+}
+
+.hero p{
+max-width:850px;
+margin:30px auto;
+font-family:Arial,sans-serif;
+font-size:18px;
+line-height:1.6;
+color:#ddd;
+}
+
+.btn{
+display:inline-block;
+padding:18px 28px;
+border-radius:18px;
+text-decoration:none;
+font-weight:900;
+margin:10px;
+transition:.3s;
+}
+
+.btn-green{
+background:#7dff00;
+color:black;
+box-shadow:0 0 25px #7dff00;
+}
+
+.btn-pink{
+background:#ff00cc;
+color:white;
+box-shadow:0 0 25px #ff00cc;
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.03);
+}
+
+/* SECTIONS */
+
+.section{
+padding:100px 22px;
+}
+
+.section-title{
+font-size:clamp(2rem,8vw,5rem);
+margin-bottom:40px;
+text-transform:uppercase;
+color:#7dff00;
+text-shadow:0 0 20px #7dff00;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;
+}
+
+/* LIQUID CARDS */
+
+.card{
+position:relative;
+overflow:hidden;
+background:#050505cc;
+border:1px solid #ffffff22;
+box-shadow:0 0 25px #00e5ff22;
+animation:morph 8s infinite alternate;
+padding-bottom:20px;
+}
+
+@keyframes morph{
+0%{
+border-radius:30% 70% 55% 45% / 40% 40% 60% 60%;
+}
+100%{
+border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+transform:translateY(-8px);
+}
+}
+
+.card img{
+width:100%;
+height:240px;
+object-fit:cover;
+display:block;
+}
+
+.card-content{
+padding:22px;
+}
+
+.badge{
+display:inline-block;
+padding:8px 14px;
+background:#ff00cc;
+border-radius:999px;
+font-size:11px;
+margin-bottom:14px;
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:10px;
+color:#00e5ff;
+}
+
+.card p{
+font-family:Arial,sans-serif;
+font-size:15px;
+line-height:1.5;
+color:#ddd;
+margin-bottom:16px;
+}
+
+.price{
+font-size:22px;
+color:#7dff00;
+margin-bottom:18px;
+}
+
+/* MEMBERSHIP */
+
+.member{
+background:
+linear-gradient(
+135deg,
+#0d0d0d,
+#29001f,
+#001a22
+);
+padding:40px;
+border-radius:35px;
+border:2px solid #7dff00;
+box-shadow:0 0 40px #7dff0044;
+}
+
+.member h2{
+font-size:clamp(2.5rem,8vw,5rem);
+margin-bottom:20px;
+color:#ff00cc;
+}
+
+.member ul{
+list-style:none;
+font-family:Arial,sans-serif;
+font-size:20px;
+line-height:2;
+}
+
+/* CHECKOUT */
+
+.checkout{
+max-width:850px;
+margin:auto;
+background:#000c;
+padding:30px;
+border-radius:28px;
+border:1px solid #00e5ff55;
+box-shadow:0 0 35px #00e5ff22;
+}
+
+input,
+textarea{
+width:100%;
+padding:16px;
+margin:12px 0;
+border:none;
+background:#080808;
+border:1px solid #ffffff22;
+color:white;
+border-radius:12px;
+font-size:16px;
+}
+
+textarea{
+min-height:120px;
+resize:none;
+}
+
+button{
+border:none;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 20px;
+text-align:center;
+font-family:Arial,sans-serif;
+color:#999;
+}
+
+/* FLOATING WHATSAPP */
+
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:18px 24px;
+border-radius:999px;
+font-weight:900;
+text-decoration:none;
+box-shadow:0 0 30px #25D366;
+z-index:999;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.08);
+}
+100%{
+transform:scale(1);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">DaCoffeezDank</div>
+
+<div>
+<a href="#shop">SHOP</a>
+<a href="#membership">MEMBERSHIP</a>
+<a href="#checkout">CHECKOUT</a>
+</div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<h1>
+CONTROLLED
