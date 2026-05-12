@@ -1,179 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DaCoFFeezDank • The Cannabinoid Tea Revolution</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DCBD DaCoFFeezDank • Living Revolution Vault</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{background:#030303;color:white;font-family:Arial Black,Arial,sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:-40%;background:radial-gradient(circle,#00f5ff55,transparent 20%),radial-gradient(circle at 80% 20%,#ff00cc55,transparent 25%),radial-gradient(circle at 30% 80%,#9dff0055,transparent 25%);filter:blur(50px);animation:flow 12s infinite alternate;z-index:-5}
-@keyframes flow{to{transform:rotate(12deg) scale(1.25)}}
-
-nav{position:fixed;top:0;width:100%;z-index:99;padding:18px 22px;display:flex;justify-content:space-between;background:#000b;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff22}
-.logo{color:#00f5ff;text-shadow:0 0 18px #00f5ff;font-size:22px}
-nav a{color:white;text-decoration:none;margin-left:12px;font-size:12px}
-
-.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 20px 70px;position:relative}
-.hero:after{content:"";position:absolute;inset:0;background:url('assets/art1.jpg') center/cover;opacity:.18;mix-blend-mode:screen;z-index:-2}
-h1{font-size:clamp(3rem,13vw,9rem);line-height:.78;text-transform:uppercase;text-shadow:0 0 20px #00f5ff,0 0 45px #ff00cc}
-.sub{max-width:900px;margin:25px auto;font-family:Arial,sans-serif;font-size:18px;line-height:1.7;color:#eee}
-.btn{display:inline-block;padding:18px 28px;border-radius:18px;background:#9dff00;color:#050505;text-decoration:none;font-weight:900;margin:8px;box-shadow:0 0 28px #9dff00;transition:.25s}
-.btn:hover{transform:scale(1.05)}
-.pink{background:#ff00cc;color:white;box-shadow:0 0 28px #ff00cc}
-.blue{background:#00f5ff;color:black;box-shadow:0 0 28px #00f5ff}
-
-.section{padding:90px 22px}
-.title{font-size:clamp(2.3rem,8vw,5rem);text-transform:uppercase;margin-bottom:35px;color:#9dff00;text-shadow:0 0 20px #9dff00}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px}
-.card{background:#070707dd;border:1px solid #ffffff22;border-radius:30px;overflow:hidden;box-shadow:0 0 30px #00f5ff22;animation:morph 8s infinite alternate}
-@keyframes morph{to{border-radius:55% 45% 35% 65%/45% 60% 40% 55%;transform:translateY(-8px)}}
-.card img{width:100%;height:280px;object-fit:cover;filter:saturate(1.25) contrast(1.1)}
-.inside{padding:24px}
-.badge{display:inline-block;background:#ff00cc;padding:8px 12px;border-radius:999px;font-size:11px;margin-bottom:12px}
-.card h3{font-size:28px;color:#00f5ff;text-transform:uppercase}
-.card p{font-family:Arial,sans-serif;line-height:1.6;color:#ddd;margin:14px 0}
-.price{color:#9dff00;font-size:22px;margin-bottom:15px}
-
-.story{background:#000b;border:2px solid #00f5ff;border-radius:35px;padding:35px;box-shadow:0 0 40px #00f5ff33}
-.story p{font-family:Arial,sans-serif;font-size:18px;line-height:1.8;color:#eee}
-
-.member{background:linear-gradient(135deg,#130018,#001b22,#111);border:2px solid #9dff00;border-radius:35px;padding:35px;box-shadow:0 0 45px #9dff0044}
-.member h2{font-size:clamp(2.6rem,9vw,6rem);color:#ff00cc;text-transform:uppercase}
-.member ul{font-family:Arial,sans-serif;font-size:20px;line-height:2;list-style:none;margin:22px 0}
-
-.checkout{max-width:850px;margin:auto;background:#000d;border:1px solid #00f5ff55;border-radius:30px;padding:28px}
-input,textarea{width:100%;padding:16px;margin:10px 0;background:#090909;color:white;border:1px solid #ffffff33;border-radius:14px;font-size:16px}
-button{border:none;cursor:pointer}
-
-.float{position:fixed;right:18px;bottom:18px;z-index:999;background:#25D366;color:white;padding:16px 22px;border-radius:999px;text-decoration:none;font-weight:900;box-shadow:0 0 30px #25D366;animation:pulse 2s infinite}
-@keyframes pulse{50%{transform:scale(1.08)}}
-footer{text-align:center;padding:50px 20px;color:#aaa;font-family:Arial,sans-serif}
+:root{--bg:#030104;--pink:#ff00c8;--green:#9dff00;--cyan:#00f5ff;--gold:#ffd000;--red:#ff1744;--card:#08050dcc;--line:#ffffff24}*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}body{background:var(--bg);color:#fff;font-family:Impact,'Arial Black',Arial,sans-serif;overflow-x:hidden}body:before{content:"";position:fixed;inset:-30%;z-index:-10;background:radial-gradient(circle at 15% 15%,#ff00c855,transparent 18%),radial-gradient(circle at 80% 20%,#00f5ff55,transparent 22%),radial-gradient(circle at 50% 90%,#9dff0040,transparent 22%);filter:blur(45px);animation:flow 13s infinite alternate}body:after{content:"";position:fixed;inset:0;z-index:-9;background:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(circle,#000 25%,transparent 78%);animation:grid 22s linear infinite}@keyframes flow{to{transform:scale(1.15) rotate(9deg)}}@keyframes grid{to{background-position:420px 260px}}@keyframes smoke{0%{transform:translateX(-4%) scale(1);opacity:.25}100%{transform:translateX(5%) scale(1.12);opacity:.55}}@keyframes run{0%{left:-160px}100%{left:110%}}@keyframes dance{0%,100%{transform:rotate(-8deg) translateY(0)}25%{transform:rotate(8deg) translateY(-9px)}50%{transform:rotate(-2deg)}75%{transform:rotate(12deg) translateY(-12px)}}@keyframes blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.08)}}@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button{border:0;cursor:pointer}.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:#000b;backdrop-filter:blur(16px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 16px}.logo{font-size:clamp(1.25rem,3vw,2rem);line-height:.85;color:var(--green);text-shadow:0 0 20px var(--green),0 0 22px var(--pink)}.logo span{display:block;color:var(--pink);font-size:.62em}.links{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.links a,.nav button{font-size:.78rem;text-transform:uppercase;padding:9px 10px;border-radius:999px;border:1px solid var(--line);background:#fff1;color:#fff}.links a:hover,.nav button:hover{background:var(--green);color:#000}.hero{min-height:100vh;position:relative;display:grid;place-items:center;text-align:center;padding:115px 18px 70px;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:url('assets/art1.jpg') center/cover no-repeat;opacity:.22;mix-blend-mode:screen;z-index:-3}.hero:after{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 30% 30%,#ff00c830,transparent 23%),radial-gradient(circle at 72% 60%,#00f5ff28,transparent 25%);animation:smoke 9s infinite alternate;z-index:-2}.kicker{display:inline-block;color:var(--green);border:1px solid var(--green);border-radius:999px;padding:8px 13px;background:#9dff0011;box-shadow:0 0 22px #9dff0044;text-transform:uppercase}.headline{font-size:clamp(3.5rem,14vw,10rem);line-height:.75;text-transform:uppercase;text-shadow:0 4px #000,0 0 24px var(--cyan),0 0 45px var(--pink);margin:20px 0}.headline b{color:var(--gold);display:inline-block;animation:float 4s infinite}.sub{font-family:Arial,sans-serif;max-width:900px;margin:auto;font-size:clamp(1rem,2.4vw,1.25rem);line-height:1.65;color:#f2eaff}.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--green);color:#050505;padding:13px 17px;border-radius:16px;font-weight:900;text-transform:uppercase;box-shadow:0 0 24px #9dff0088}.btn.pink{background:var(--pink);color:#fff;box-shadow:0 0 24px #ff00c888}.btn.blue{background:var(--cyan);color:#000;box-shadow:0 0 24px #00f5ff88}.btn.dark{background:#111;color:#fff;border:1px solid var(--line)}.section{padding:86px 18px}.wrap{max-width:1240px;margin:auto}.title{font-size:clamp(2.7rem,8vw,6rem);line-height:.84;color:var(--green);text-transform:uppercase;text-shadow:0 0 18px var(--green),0 0 28px var(--pink);margin-bottom:18px}.lead{font-family:Arial,sans-serif;max-width:900px;line-height:1.65;color:#eee;font-size:1.08rem;margin-bottom:28px}.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:30px;box-shadow:0 0 35px #a600ff44,0 0 18px #00f5ff22;overflow:hidden}.panel{padding:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.card{position:relative;transition:.2s}.card:hover{transform:translateY(-7px)}.art{height:188px;background:var(--img) center/cover,linear-gradient(135deg,#320047,#001b22);position:relative}.art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000d,transparent),radial-gradient(circle at 20% 20%,#fff5,transparent 20%)}.face{position:absolute;right:12px;bottom:-10px;width:78px;height:88px;border-radius:45% 55% 43% 57%;background:linear-gradient(135deg,var(--pink),var(--gold));box-shadow:0 0 30px #ff00c888;animation:float 4s infinite}.face:before,.face:after{content:"";position:absolute;top:24px;width:16px;height:22px;background:#fff;border-radius:50%;animation:blink 5s infinite}.face:before{left:16px}.face:after{right:16px}.body{padding:18px}.badge{display:inline-block;padding:6px 9px;border-radius:999px;background:#ff00c82b;border:1px solid #ff00c877;font-size:.72rem;text-transform:uppercase}.card h3{font-size:1.65rem;line-height:1;color:var(--cyan);text-shadow:0 0 13px var(--cyan);text-transform:uppercase;margin:11px 0}.small{font-family:Arial,sans-serif;font-size:.9rem;line-height:1.55;color:#ddd}.price{font-size:1.35rem;color:var(--green);text-shadow:0 0 12px var(--green);margin:11px 0}.meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.meta span{font-family:Arial,sans-serif;font-size:.72rem;border:1px solid var(--line);background:#fff1;border-radius:999px;padding:5px 7px}.card .row{justify-content:flex-start;margin-top:12px}.story{display:grid;grid-template-columns:1fr .8fr;gap:22px}.castrobox{min-height:360px;display:grid;place-items:center;background:url('assets/art6.jpg') center/cover;border-radius:28px;position:relative}.castro{width:min(260px,80%);aspect-ratio:1;border-radius:45% 55% 44% 56%;background:linear-gradient(135deg,#5b2600,#ffb300,#7800ff);box-shadow:0 0 60px #ff00c877;position:relative;animation:float 4s infinite}.castro:before,.castro:after{content:"";position:absolute;top:28%;width:45px;height:63px;background:#fff;border-radius:50%;animation:blink 4.6s infinite}.castro:before{left:48px}.castro:after{right:48px}.mouth{position:absolute;left:50%;bottom:25%;transform:translateX(-50%);width:105px;height:40px;border-radius:0 0 70px 70px;background:#13020b;border:5px solid #fff}.bigcigar{position:absolute;right:-110px;top:58%;width:210px;height:32px;border-radius:999px;background:linear-gradient(90deg,#351405,#d6892a,#ff5b00);transform:rotate(9deg);box-shadow:0 0 28px #ff5b00}.tiers,.factions{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}.tier,.faction{padding:22px;border-radius:26px;background:#fff1;border:1px solid var(--line)}.tier h3,.faction h3{font-size:1.85rem;color:var(--gold);text-shadow:0 0 12px var(--gold)}.tier ul{font-family:Arial,sans-serif;line-height:1.8;margin:12px 0 18px 18px}.faction{cursor:pointer}.faction.active{outline:3px solid var(--green);box-shadow:0 0 30px #9dff0066}.forum{display:grid;grid-template-columns:270px 1fr;gap:16px}.rooms{display:flex;flex-direction:column;gap:9px}.room{padding:13px;border-radius:17px;background:#fff1;border:1px solid var(--line);cursor:pointer}.room.active{background:var(--green);color:#000}.post{font-family:Arial,sans-serif;border-radius:20px;background:#fff1;border:1px solid var(--line);padding:15px;margin:10px 0}.post strong{font-family:Impact;color:var(--pink);font-size:1.25rem}.checkoutgrid{display:grid;grid-template-columns:1fr 360px;gap:20px}.world{min-height:420px;background:url('assets/art6.jpg') center/cover;border-radius:28px;display:grid;place-items:center}.line{display:grid;grid-template-columns:1fr auto auto;gap:10px;border-bottom:1px solid var(--line);padding:11px 0;font-family:Arial,sans-serif}.qty{display:flex;gap:6px;align-items:center}.qty button{width:30px;height:30px;border-radius:10px;background:#fff2;color:#fff}.form input,.form textarea,.form select{width:100%;padding:13px;margin:7px 0;border-radius:14px;background:#09090e;border:1px solid var(--line);color:#fff;font-family:Arial,sans-serif}.bank{border:1px dashed var(--green);background:#9dff0011;border-radius:18px;padding:15px;font-family:Arial,sans-serif;line-height:1.7}.stamp{display:none;color:var(--red);border:5px solid var(--red);border-radius:18px;padding:12px;text-align:center;font-size:2rem;transform:rotate(-7deg);text-shadow:0 0 14px var(--red)}.stamp.show{display:block}.runner{position:fixed;bottom:70px;left:-160px;z-index:50;width:120px;height:120px;pointer-events:none;animation:run 13s infinite linear}.runner.two{bottom:145px;animation-delay:5s;filter:hue-rotate(120deg)}.creature{width:100%;height:100%;border-radius:44% 56%;background:linear-gradient(135deg,var(--pink),var(--green));box-shadow:0 0 30px var(--pink);position:relative;animation:dance 1.2s infinite}.creature:before,.creature:after{content:"";position:absolute;top:28%;width:22px;height:28px;border-radius:50%;background:#fff;animation:blink 4s infinite}.creature:before{left:30px}.creature:after{right:30px}.creature i{position:absolute;right:-28px;top:56%;width:70px;height:16px;border-radius:999px;background:linear-gradient(90deg,#371607,#d88a22,#ff5b00);box-shadow:0 0 18px #ff5b00}.floatwa{position:fixed;right:16px;bottom:16px;z-index:100;background:#25D366;padding:14px 18px;border-radius:999px;font-weight:900;box-shadow:0 0 28px #25D366}.toast{position:fixed;left:50%;bottom:28px;z-index:200;transform:translate(-50%,120px);background:#06030b;border:1px solid var(--green);box-shadow:0 0 24px var(--green);padding:12px 16px;border-radius:999px;transition:.22s}.toast.show{transform:translate(-50%,0)}footer{text-align:center;color:#bbb;font-family:Arial,sans-serif;padding:42px 18px}.legal{font-family:Arial,sans-serif;font-size:.8rem;line-height:1.5;color:#ccc;border-top:1px solid var(--line);padding-top:14px;margin-top:18px}@media(max-width:850px){.links a{display:none}.story,.forum,.checkoutgrid{grid-template-columns:1fr}.rooms{flex-direction:row;overflow:auto}.line{grid-template-columns:1fr}.floatwa{left:16px;right:16px;text-align:center}.section{padding:70px 14px}}
 </style>
 </head>
-
 <body>
-
-<nav>
-<div class="logo">DaCoFFeezDank</div>
-<div>
-<a href="#vault">Vault</a>
-<a href="#founders">Founders</a>
-<a href="#story">Story</a>
-<a href="#checkout">WhatsApp</a>
-</div>
-</nav>
-
-<section class="hero">
-<div>
-<h1>The Cannabinoid Tea Revolution</h1>
-<p class="sub">Futuristic hemp lab. Psychedelic street art. FSA-aligned CBD / CBG botanical tea extract culture. Built from cerebral palsy, resilience, creativity and community.</p>
-<a class="btn blue" href="#vault">ENTER THE VAULT</a>
-<a class="btn pink" href="https://wa.me/447763383729?text=🚀%20Welcome%20to%20the%20DaCoFFeezDank%20Revolution.%20I%20want%20to%20enter%20the%20vault." target="_blank">TALK TO DANK PLUG</a>
-</div>
-</section>
-
-<section class="section" id="vault">
-<h2 class="title">Liquid Extract Vault</h2>
-<div class="grid">
-
-<div class="card">
-<img src="assets/art2.jpg">
-<div class="inside">
-<span class="badge">BOTANICAL TEA EXTRACT</span>
-<h3>Afghan Pie</h3>
-<p>Hemp-derived CBD / CBG profile. Creamy, earthy, vanilla notes. Lab-style street art drop.</p>
-<div class="price">From £12</div>
-<a class="btn" href="https://wa.me/447763383729?text=Hi%20DNK%20Plug%2C%20I%20want%20info%20on%20Afghan%20Pie%20Botanical%20Tea%20Extract." target="_blank">TALK TO DANK PLUG</a>
-</div>
-</div>
-
-<div class="card">
-<img src="assets/art3.jpg">
-<div class="inside">
-<span class="badge">CBD / CBG BLEND</span>
-<h3>Blue Dream</h3>
-<p>Berry, citrus and pine terpene universe. Psychedelic lab-inspired hemp tea extract.</p>
-<div class="price">From £15</div>
-<a class="btn" href="https://wa.me/447763383729?text=Hi%20DNK%20Plug%2C%20I%20want%20info%20on%20Blue%20Dream%20CBD%20CBG%20Blend." target="_blank">TALK TO DANK PLUG</a>
-</div>
-</div>
-
-<div class="card">
-<img src="assets/art4.jpg">
-<div class="inside">
-<span class="badge">PREMIUM COFFEE</span>
-<h3>Pluggd House Blend</h3>
-<p>Rich, nutty, smooth roast. Coffee culture fused with the DCBD street-lab universe.</p>
-<div class="price">£8.99 — £24.99</div>
-<a class="btn" href="https://wa.me/447763383729?text=Hi%20DNK%20Plug%2C%20I%20want%20Pluggd%20House%20Blend%20coffee." target="_blank">TALK TO DANK PLUG</a>
-</div>
-</div>
-
-<div class="card">
-<img src="assets/art5.jpg">
-<div class="inside">
-<span class="badge">GOODIES</span>
-<h3>Caps & Art Drops</h3>
-<p>Limited hats, stickers, wall art and founder-only collectible drops.</p>
-<div class="price">Vault Access</div>
-<a class="btn pink" href="https://wa.me/447763383729?text=Hi%20DNK%20Plug%2C%20I%20want%20caps%2C%20art%20and%20goodies." target="_blank">UNLOCK</a>
-</div>
-</div>
-
-</div>
-</section>
-
-<section class="section" id="founders">
-<div class="member">
-<h2>The Founders</h2>
-<ul>
-<li>👑 Only 420 members allowed</li>
-<li>🔥 £19.99 every 2 weeks</li>
-<li>⚡ 10% off orders over £50</li>
-<li>🎁 2g botanical bonus on qualifying orders where available</li>
-<li>💬 Private WhatsApp group: “The Founders”</li>
-<li>🧬 Founder names: Castro, Che, Afghan Saint, Jungle Founder, Blue Zushi General</li>
-</ul>
-<a class="btn pink" href="https://wa.me/447763383729?text=👑%20Welcome%20me%20to%20THE%20FOUNDERS.%20I%20want%20the%20%C2%A319.99%20membership%20and%20to%20join%20the%20DaCoFFeezDank%20Revolution." target="_blank">JOIN THE FOUNDERS</a>
-</div>
-</section>
-
-<section class="section" id="story">
-<h2 class="title">Founder Story</h2>
-<div class="story">
-<p>DaCoFFeezDank was built through cerebral palsy, pain, resilience and creativity. This is not corporate wellness. This is a UK underground movement turning struggle into colour, community, coffee, hemp-derived botanical extracts and futuristic street art.</p>
-<br>
-<p>The mission is simple: build a space where people feel seen, welcomed and part of something different — the cannabinoid tea revolution.</p>
-</div>
-</section>
-
-<section class="section" id="checkout">
-<h2 class="title">WhatsApp Portal</h2>
-<div class="checkout">
-<input id="name" placeholder="Your name">
-<input id="interest" placeholder="Product / membership / coffee / goodies">
-<textarea id="notes" placeholder="Tell DNK Plug what you want"></textarea>
-<button class="btn blue" onclick="sendWA()">TALK TO DANK PLUG</button>
-</div>
-</section>
-
-<footer>
-FSA-aligned hemp wellness • CBD / CBG botanical tea extracts • Coffee • Art • Community • 18+
-</footer>
-
-<a class="float" href="https://wa.me/447763383729?text=🚀%20Welcome%20to%20the%20DaCoFFeezDank%20Revolution.%20I%20want%20to%20enter%20the%20vault." target="_blank">TALK TO DANK PLUG</a>
-
+<nav class="nav"><a class="logo" href="#entry">DCBD<span>DaCoFFeezDank</span></a><div class="links"><a href="#story">Story</a><a href="#vault">Vault</a><a href="#membership">Membership</a><a href="#armies">Armies</a><a href="#lounge">Forum</a><a href="#checkout">Checkout</a><button onclick="openCart()">🛒 <span id="cartCount">0</span></button></div></nav>
+<div class="runner"><div class="creature"><i></i></div></div><div class="runner two"><div class="creature"><i></i></div></div>
+<section class="hero" id="entry"><div><div class="kicker">18+ • artwork viewable to all • living universe</div><h1 class="headline"><b>Castro</b><br>El Plug</h1><p class="sub">I built DCBD from cerebral palsy, street survival, humour, art and the belief that a business I use myself can change my life — and the revolution can change yours. Welcome to the living coffeeshop universe: shop, forum, factions, founder badges and animated cartoon chaos.</p><div class="row"><a class="btn blue" href="#vault">Enter The Vault</a><a class="btn pink" href="#membership">Join The Revolution</a><a class="btn dark" href="#lounge">Enter Forum</a></div></div></section>
+<section class="section" id="story"><div class="wrap story"><div class="panel"><h2 class="title">Pain → Purpose → Power</h2><p class="small">DCBD is not a corporate template. It is a streetwise cartoon universe built from lived experience: cerebral palsy, being underestimated, learning to crawl back, creating art from pressure, and turning survival into a community.</p><br><p class="small">Everyone can view the artwork and browse the Vault. Members get deeper perks: discounts, profile identity, group creation, badges, factions and a voice inside the Revolution Lounge.</p><div class="legal">Responsible-use note: keep product wording document-led. Use batch/COA evidence, age gates, and avoid medical claims. Compliance text should be reviewed before public launch.</div></div><div class="castrobox"><div class="castro"><div class="mouth"></div><div class="bigcigar"></div></div></div></div></section>
+<section class="section" id="vault"><div class="wrap"><h2 class="title">The Vault</h2><p class="lead">A narrowed menu built like one interlinking graffiti mural: Revolution bottles, premium hash archive, concentrate drops and 57 flavour worlds. All products are visible to everyone; members get rewards and 10% off.</p><div class="grid" id="productGrid"></div></div></section>
+<section class="section" id="membership"><div class="wrap"><h2 class="title">Membership</h2><div class="tiers"><div class="tier"><h3>Guest</h3><ul><li>View all artwork</li><li>Browse all products</li><li>Use checkout</li><li>Public forum view</li><li>Random title: Low Rank Gladiator</li></ul><button class="btn dark" onclick="setMember(false)">Enter As Guest</button></div><div class="tier"><h3>Revolution Member</h3><ul><li>£19.90 bi-weekly</li><li>2g concentrate monthly OR £80 hash allowance</li><li>10% off everything</li><li>Create/share forum groups</li><li>Faction profile + badges</li></ul><button class="btn pink" onclick="setMember(true)">Activate Member Mode</button></div><div class="tier"><h3>First 420 Founders</h3><ul><li>Generated cartoon portrait</li><li>Founder wall placement</li><li>Animated badge frame</li><li>Founder Hall room</li><li>Permanent lore status</li></ul><button class="btn blue" onclick="whatsapp('I want Founder status in the First 420.')">Ask About Founder</button></div></div></div></section>
+<section class="section" id="armies"><div class="wrap"><h2 class="title">Choose Your Army</h2><p class="lead">Pick an army any time. Your profile aura, forum badge, generated cartoon portrait and group energy shift with it.</p><div class="factions" id="factions"></div></div></section>
+<section class="section" id="lounge"><div class="wrap"><h2 class="title">The Revolution Lounge</h2><p class="lead">A polished Amsterdam-style digital coffeeshop forum. Streetwise, open, funny and real — no racism, hate, harassment, threats or mocking disability.</p><div class="forum panel"><div class="rooms" id="rooms"></div><div><div class="form"><input id="postTitle" placeholder="Post title"><textarea id="postBody" placeholder="Speak your truth, ask a question, share art, start a flavour war..."></textarea><button class="btn blue" onclick="addPost()">Post To Lounge</button></div><div id="posts"></div></div></div></div></section>
+<section class="section" id="checkout"><div class="wrap"><h2 class="title">Revolution Checkout</h2><p class="lead">World-map bank vault energy. Manual bank transfer now, Open Banking later. Use the order reference when paying, then send to Talk2DNKPlug.</p><div class="checkoutgrid"><div class="world"><div class="castro"><div class="mouth"></div><div class="bigcigar"></div></div></div><div class="panel"><div id="cartLines"></div><div class="price">Total: £<span id="total">0.00</span></div><div class="form"><input id="custName" placeholder="Your name"><input id="custPhone" placeholder="Phone / WhatsApp"><textarea id="custAddress" placeholder="Delivery details"></textarea></div><div class="bank" id="bankBox"></div><div class="row"><button class="btn blue" onclick="copyOrder()">Copy Order</button><button class="btn pink" onclick="sendOrderWA()">Talk2DNKPlug</button></div><div class="stamp" id="stamp">REVOLUTION ORDER CREATED</div><div class="legal">Bank transfer is manual: customers must authorise payment in their own banking app. Replace CONFIG.bank fields in the code with the account details you want shown at checkout.</div></div></div></div></section>
+<footer>DCBD DaCoFFeezDank • Living street-art coffeeshop universe • 18+ • lab documents / COA where applicable • not medical advice</footer><a class="floatwa" href="https://wa.me/447763383729?text=Talk2DNKPlug%20-%20I%20want%20to%20enter%20the%20DCBD%20Revolution." target="_blank">Talk2DNKPlug</a><div class="toast" id="toast">Saved</div>
 <script>
-function sendWA(){
-const name=document.getElementById("name").value || "New Founder";
-const interest=document.getElementById("interest").value || "The Vault";
-const notes=document.getElementById("notes").value || "I want to know what is available in my area.";
-const msg=`🚀 Welcome to the DaCoFFeezDank Revolution.%0A%0AName: ${name}%0AInterest: ${interest}%0ANotes: ${notes}%0A%0AI want to talk to DNK Plug and enter the vault.`;
-window.open("https://wa.me/447763383729?text="+encodeURIComponent(msg),"_blank");
-}
+const CONFIG={whatsapp:'447763383729',bank:{name:'Santander',accountName:'DCBD / Pluggd Coffee & Dank',sortCode:'ADD_SORT_CODE_HERE',accountNumber:'ADD_ACCOUNT_NUMBER_HERE'},images:['assets/art1.jpg','assets/art2.jpg','assets/art3.jpg','assets/art4.jpg','assets/art5.jpg','assets/art6.jpg']};
+const PRODUCTS=[
+{id:'bottle',name:'Revolution 2ML Bottle',tag:'Traceable bottle',price:15,desc:'Curved glass, QR/batch-code slot, flavour worlds and bring-the-revolution-with-you energy.',meta:['2ml','£15 each','multi-buy ready'],img:'assets/art1.jpg'},
+{id:'thcsiso',name:'THCs Isolate',tag:'White Ghost',price:29,desc:'Crystal-style lab drop with ice-blue graffiti, ghost smoke and COA panel.',meta:['99%+ style purity','1g from £29','COA slot'],img:'assets/art3.jpg'},
+{id:'amnesia',name:'Amnesia Haze Budder',tag:'Miami Riot',price:25.5,desc:'Lemon, pine and haze-inspired terpene artwork. Daytime neon rebel world.',meta:['budder','terp profile','member 10% off'],img:'assets/art2.jpg'},
+{id:'ogkush',name:'OG Kush Budder',tag:'Manchester Midnight',price:24.4,desc:'Earth, pine and spice-inspired. Dark Victorian alley smoke with Castro watching from fog.',meta:['budder','evening-inspired','batch code'],img:'assets/art4.jpg'},
+{id:'gsc',name:'GSC Budder',tag:'Sugar Riot',price:26.7,desc:'Sweet cookie, vanilla and nutty-inspired profile. Melting cartoon bakery universe.',meta:['budder','best seller energy','COA slot'],img:'assets/art5.jpg'},
+{id:'lemon',name:'Lemon Haze Budder',tag:'Citrus Frequency',price:23.2,desc:'Zesty lemon and floral neon. Radioactive citrus lab with electric graffiti storms.',meta:['budder','fresh citrus','COA slot'],img:'assets/art6.jpg'},
+{id:'czbg',name:'CzbG Isolate',tag:'Temple Isolate',price:27,desc:'Emerald crystal artwork, monk-mascot calm, spiritual apothecary graphics.',meta:['99%+ style purity','green crystal','lab panel'],img:'assets/art1.jpg'},
+{id:'afghanpie',name:'Afghan Pie Hash',tag:'Signature Hash',price:14,desc:'Gold desert smoke, caramel lava drips and ancient hash guardian mascot.',meta:['1g from £14','28g £300','archive drop'],img:'assets/art2.jpg'},
+{id:'blackafghan',name:'Black Afghan Hash',tag:'Midnight Archive',price:12,desc:'Black stone textures, red embers, industrial darkness and heavy smoke chambers.',meta:['1g from £12','28g £255','night world'],img:'assets/art3.jpg'},
+{id:'lebanese',name:'Lebanese Blonde Hash',tag:'Golden Palace',price:11,desc:'Gold neon royalty, floral smoke clouds and psychedelic palace architecture.',meta:['1g from £11','28g £225','smooth world'],img:'assets/art4.jpg'},
+{id:'moroccan',name:'Moroccan Kif Hash',tag:'Lantern Market',price:10,desc:'Spice-market lanterns, green fog and old-world mysticism.',meta:['1g from £10','28g £210','classic'],img:'assets/art5.jpg'}];
+const FACTIONS=[['Castro Revolution','Purple neon survival, art, cigar smoke and founder energy.'],['Midnight Manchester','Dark gothic rain, honest debate and street resilience.'],['Citrus Syndicate','Electric citrus labs, fast ideas and radioactive optimism.'],['JungleBoyz','Tropical chaos, flavour hunting and cartoon colour.'],['Eye Cult','Surreal art, watchers, philosophy and hidden symbols.']];
+const ROOMS=['Smoke Circle','Cannabinoid Lab','Art Chamber','Midnight Philosophy','Founder Hall','Music & Smoke','Street Survival'];let cart=JSON.parse(localStorage.cart||'{}'),member=localStorage.member==='true',faction=localStorage.faction||FACTIONS[0][0],room=ROOMS[0],posts=JSON.parse(localStorage.posts||'[]');
+function money(n){return Number(n).toFixed(2)}function toast(t){let e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1600)}function save(){localStorage.cart=JSON.stringify(cart);localStorage.member=member;localStorage.faction=faction;localStorage.posts=JSON.stringify(posts)}
+function renderProducts(){productGrid.innerHTML=PRODUCTS.map((p,i)=>`<div class="card"><div class="art" style="--img:url('${p.img}')"><div class="face"></div></div><div class="body"><span class="badge">${p.tag}</span><h3>${p.name}</h3><p class="small">${p.desc}</p><div class="meta">${p.meta.map(m=>`<span>${m}</span>`).join('')}</div><div class="price">From £${money(member?p.price*.9:p.price)}</div><div class="row"><button class="btn" onclick="addCart('${p.id}')">Add</button><button class="btn dark" onclick="whatsapp('Tell me more about ${p.name}')">Ask</button></div></div></div>`).join('')}
+function renderFactions(){factions.innerHTML=FACTIONS.map(f=>`<div class="faction ${f[0]===faction?'active':''}" onclick="faction='${f[0]}';save();renderFactions();toast('Army changed: ${f[0]}')"><h3>${f[0]}</h3><p class="small">${f[1]}</p></div>`).join('')}
+function renderRooms(){rooms.innerHTML=ROOMS.map(r=>`<div class="room ${r===room?'active':''}" onclick="room='${r}';renderRooms();renderPosts()">${r}</div>`).join('')}
+function renderPosts(){let list=posts.filter(p=>p.room===room);postsEl=document.getElementById('posts');postsEl.innerHTML=(list.length?list:[{title:'Welcome to '+room,body:'Start the first post. Respect the lounge: no racism, hate, harassment, threats or mocking disability.',rank:'Castro El Plug'}]).map(p=>`<div class="post"><strong>${p.title}</strong><div class="rank">${p.rank||faction} • ${room}</div><p>${p.body}</p></div>`).join('')}
+function addPost(){let title=postTitle.value.trim()||'Untitled Smoke Note',body=postBody.value.trim()||'No message yet.';posts.unshift({room,title,body,rank:member?faction+' Member':'Low Rank Gladiator'});postTitle.value='';postBody.value='';save();renderPosts();toast('Posted to '+room)}
+function addCart(id){cart[id]=(cart[id]||0)+1;save();renderCart();toast('Added to cart')}function setQty(id,n){cart[id]=Math.max(0,(cart[id]||0)+n);if(!cart[id])delete cart[id];save();renderCart()}function openCart(){location.hash='checkout';renderCart()}function setMember(v){member=v;save();renderProducts();renderCart();toast(v?'Member 10% active':'Guest mode active')}
+function renderCart(){let items=Object.keys(cart).map(id=>[PRODUCTS.find(p=>p.id===id),cart[id]]).filter(x=>x[0]);cartCount.textContent=items.reduce((s,x)=>s+x[1],0);let total=items.reduce((s,[p,q])=>s+(member?p.price*.9:p.price)*q,0);cartLines.innerHTML=items.length?items.map(([p,q])=>`<div class="line"><span>${p.name}<br><small>${member?'Member price':'Guest price'}</small></span><span>£${money((member?p.price*.9:p.price)*q)}</span><span class="qty"><button onclick="setQty('${p.id}',-1)">-</button>${q}<button onclick="setQty('${p.id}',1)">+</button></span></div>`).join(''):'<p class="small">Cart empty. Add products from the Vault.</p>';total.textContent=money(total);bankBox.innerHTML=`<b>Bank transfer details</b><br>${CONFIG.bank.name}<br>${CONFIG.bank.accountName}<br>Sort code: ${CONFIG.bank.sortCode}<br>Account: ${CONFIG.bank.accountNumber}<br>Reference: ${ref()}<br><small>Add your real bank details inside CONFIG.bank in index.html.</small>`}
+function ref(){let r=sessionStorage.ref;if(!r){r='DCBD-'+Math.floor(10000+Math.random()*89999);sessionStorage.ref=r}return r}function orderText(){let items=Object.keys(cart).map(id=>{let p=PRODUCTS.find(x=>x.id===id);return p?`${p.name} x${cart[id]}`:''}).filter(Boolean).join(', ');return `DCBD ORDER ${ref()}\nName: ${custName.value||''}\nPhone: ${custPhone.value||''}\nAddress: ${custAddress.value||''}\nArmy: ${faction}\nMember: ${member?'Yes':'No'}\nItems: ${items||'No items'}\nTotal: £${total.textContent}`}
+function copyOrder(){navigator.clipboard.writeText(orderText());stamp.classList.add('show');toast('Order copied')}function sendOrderWA(){stamp.classList.add('show');whatsapp(orderText())}function whatsapp(text){window.open('https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(text),'_blank')}
+renderProducts();renderFactions();renderRooms();renderPosts();renderCart();
 </script>
-
 </body>
 </html>
