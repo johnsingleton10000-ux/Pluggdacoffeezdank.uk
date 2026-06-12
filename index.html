@@ -1,1 +1,87 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DCBD Gallery</title><style>body{margin:0;background:#050505;color:#f6ecd8;font-family:Arial,sans-serif}.wrap{width:min(1180px,92vw);margin:auto}.display{font-family:Impact,Arial Black,sans-serif}.age{position:fixed;inset:0;background:#000;z-index:99;display:grid;place-items:center}.age.hide{display:none}.agebox{text-align:center;border:1px solid #d8aa37;border-radius:24px;padding:30px;background:#090909;max-width:620px}.agebox h1{font-size:72px;color:#d8aa37;margin:0}.btn{display:inline-block;border:1px solid #d8aa37;border-radius:12px;padding:13px 16px;color:#f6ecd8;text-decoration:none;font-weight:900;text-transform:uppercase;background:rgba(255,255,255,.05);cursor:pointer}.gold{background:linear-gradient(90deg,#d8aa37,#f2d577);color:#111}.lime{background:linear-gradient(90deg,#b7ff28,#e6ff76);color:#061100}nav{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.9);border-bottom:1px solid rgba(216,170,55,.35)}nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:13px 0}.logo{font-size:34px;color:#d8aa37;text-decoration:none}.hero{min-height:78vh;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.hero h2{font-size:clamp(56px,9vw,118px);line-height:.82;margin:0}.hero span{color:#b7ff28}.stage{min-height:480px;border:1px solid rgba(216,170,55,.35);border-radius:24px;background:url('/assets/hero-founder.svg') center/cover;box-shadow:0 0 70px rgba(139,53,255,.25)}section{padding:58px 0}h2{font-size:clamp(42px,7vw,82px);margin:0 0 22px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid rgba(216,170,55,.35);border-radius:22px;overflow:hidden;background:rgba(12,12,16,.94)}.card img{width:100%;height:250px;object-fit:cover;display:block}.pad{padding:19px}.card h3{font-size:32px;color:#d8aa37;margin:0 0 8px}.price{font:34px Impact;color:#b7ff28}.sheet{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;place-items:end center;padding:18px;z-index:50}.sheet.show{display:grid}.sheetbox{width:min(920px,96vw);background:#090909;border:1px solid rgba(216,170,55,.35);border-radius:24px;overflow:auto;max-height:92vh}.sheetbox img{width:100%;height:330px;object-fit:cover}.cart{position:fixed;right:16px;bottom:16px;z-index:25}.cartPanel{display:none;position:fixed;right:16px;bottom:78px;width:min(390px,92vw);background:#080808;border:1px solid rgba(216,170,55,.35);border-radius:20px;padding:16px;z-index:24}.cartPanel.show{display:block}.field{width:100%;background:#050505;border:1px solid rgba(216,170,55,.35);color:#f6ecd8;padding:12px;border-radius:10px;margin:7px 0}footer{border-top:1px solid rgba(216,170,55,.35);padding:30px 0;color:#b8ad9c}@media(max-width:900px){.hero,.grid{grid-template-columns:1fr}.stage{min-height:360px}}</style></head><body><div id="age" class="age"><div class="agebox"><h1 class="display">18 GATE</h1><p>DCBD is an 18+ art, education, clothing and community experience.</p><button class="btn lime" onclick="age.classList.add('hide')">I AM 18+ — ENTER</button></div></div><nav><div class="wrap"><a class="logo display" href="#">DCBD</a><button class="btn" onclick="cartPanel.classList.toggle('show')">Bag <b id="count">0</b></button></div></nav><header class="hero wrap"><div><h2 class="display">Every Card <span>Has A Story</span></h2><p>Newest DCBD update with artwork cards, product-style screens, clothing, membership and a customer enquiry bag.</p><a class="btn gold" href="#cards">View Cards</a></div><div class="stage"></div></header><section id="cards" class="wrap"><h2 class="display">Artwork Product Cards</h2><div id="cardsGrid" class="grid"></div></section><section class="wrap"><div class="card"><img src="/assets/membership-card.svg"><div class="pad"><h3>Revolutionary Membership</h3><p>Members lounge, early drops, art previews and community rewards.</p><div class="price">£19.99</div><button class="btn lime" onclick="add('Membership',19.99)">Add</button></div></div></section><section class="wrap"><h2 class="display">Customer Enquiry</h2><input class="field" id="name" placeholder="Name"><input class="field" id="area" placeholder="Area"><textarea class="field" id="note" rows="4" placeholder="Notes"></textarea><button class="btn gold" onclick="send()">Prepare Enquiry</button><p id="out"></p></section><footer><div class="wrap">DCBD / PluggdCoffeezDank UK • 18+ • Art, education, clothing, community and responsible enquiry.</div></footer><div id="cartPanel" class="cartPanel"><h3>Your Bag</h3><div id="items"></div><p id="total"></p><button class="btn gold" onclick="send()">Prepare Enquiry</button></div><button class="btn gold cart" onclick="cartPanel.classList.toggle('show')">Bag <b id="count2">0</b></button><div id="sheet" class="sheet" onclick="if(event.target.id==='sheet')sheet.classList.remove('show')"><div class="sheetbox"><img id="simg"><div class="pad"><h2 id="stitle" class="display"></h2><p id="sdesc"></p><div id="sprice" class="price"></div><button id="sadd" class="btn gold">Add</button></div></div></div><script>const data=[['Herbal Tea Wall',20,'/assets/thca-herbal-teas-menu.svg','Neon market-board card with flavour wall artwork.'],['Street Revolution Card',50,'/assets/afghan-sticky-bundle.svg','White brick wall, poster lettering and Manchester grit.'],['DCBD Craft Division',0,'/assets/hash-organic-extraction.svg','Lime and magenta craft identity artwork.'],['Dam Classics Vault',0,'/assets/dam-classics-cards.svg','Classic collector sleeves and coffee-shop culture.'],['Cali Collection Wall',35,'/assets/cali-extracts-grid.svg','Sunset collector wall with premium card styling.'],['E-Liquid Cali Vault',22,'/assets/thcp-eliquid-cali.svg','Purple sky, palm night and bottle-card artwork.'],['Flavour Wall',12.99,'/assets/eliquid-flavours.svg','Six-column neon flavour poster.'],['Black DCBD Hoodie',56,'/assets/hoodie-black-dcbd.svg','Black hoodie with custom artwork choice.']];let cart=[];function price(n){return n?('£'+n):'Quote'}function render(){cardsGrid.innerHTML=data.map((x,i)=>`<div class="card"><img src="${x[2]}"><div class="pad"><h3>${x[0]}</h3><p>${x[3]}</p><div class="price">${price(x[1])}</div><button class="btn gold" onclick="openCard(${i})">View Screen</button> <button class="btn" onclick="add('${x[0]}',${x[1]})">Add</button></div></div>`).join('')}function openCard(i){let x=data[i];simg.src=x[2];stitle.textContent=x[0];sdesc.textContent=x[3];sprice.textContent=price(x[1]);sadd.onclick=()=>add(x[0],x[1]);sheet.classList.add('show')}function add(n,p){cart.push([n,p]);update();cartPanel.classList.add('show')}function update(){count.textContent=count2.textContent=cart.length;items.innerHTML=cart.map((x,i)=>`<p>${x[0]} - ${price(x[1])} <button onclick="cart.splice(${i},1);update()">x</button></p>`).join('')||'Empty';total.textContent='Total estimate: '+price(cart.reduce((a,b)=>a+(+b[1]||0),0))}function send(){out.textContent='Enquiry prepared: '+cart.map(x=>x[0]).join(', ')+' | '+(note.value||'No notes');cartPanel.classList.remove('show')}render();update();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PluggdaCoffeezDank.uk | DCBD</title>
+  <meta name="description" content="DCBD product-first ecommerce storefront with My Stash, Estate Born community boards and collectible card rewards." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="ageGate" class="age-gate">
+    <div class="gate-card">
+      <p class="eyebrow">18 Gate • Respect the cycle</p>
+      <h1>PLUGGDA<span>COFFEEZ</span>DANK.UK</h1>
+      <p class="lead">A product-first ecommerce store with Estate Born community boards, membership and collectible card rewards.</p>
+      <div class="gate-actions">
+        <button id="enterSite" class="btn btn-primary">I am 18+ • Enter</button>
+        <a class="btn btn-ghost" href="https://www.google.com">Leave</a>
+      </div>
+      <small>Age restricted. Follow UK law. Product information must be verified before publishing.</small>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="crown">♛</span><strong>PLUGGDA<span>COFFEEZ</span>DANK.UK</strong></a>
+    <nav class="desktop-nav">
+      <a href="#vault">The Vault</a>
+      <a href="#stash">My Stash</a>
+      <a href="#cards">Cards</a>
+      <a href="#estate">Estate Born</a>
+      <a href="#membership">Membership</a>
+    </nav>
+    <button id="cartButton" class="cart-pill">My Stash <span id="cartCount">0</span></button>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-copy">
+        <p class="eyebrow">Manchester grit • product-first • community second</p>
+        <h1>More than a checkout. Every page is a piece of art.</h1>
+        <p class="lead">Shop the Vault, build My Stash, collect DCBD cards and join Estate Born boards for reviews, votes and member drops.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#vault">Shop The Vault</a>
+          <a class="btn btn-secondary" href="#estate">Join Estate Born</a>
+        </div>
+        <div class="trust-row"><span>Discreet service</span><span>Stripe membership</span><span>WhatsApp orders</span><span>Card rewards</span></div>
+      </div>
+      <div class="hero-art poster-frame"><h2>18 GATE</h2><p>Every legend starts somewhere.</p></div>
+    </section>
+
+    <section class="section story-grid">
+      <article class="story-card wide"><p class="eyebrow">Stories from the streets</p><h2>The Individual Cannabinoid Revolution</h2><p>DCBD is built around education, creativity and community. The artwork gives the store identity, while the buying flow stays simple: choose products, build My Stash and checkout.</p></article>
+      <article class="story-card"><h3>Education</h3><p>Knowledge over hype. Clear categories, prices and descriptions.</p></article>
+      <article class="story-card"><h3>Community</h3><p>Estate Born boards let customers review products and vote on future releases.</p></article>
+      <article class="story-card"><h3>Collecting</h3><p>Every qualifying order can reveal a card and unlock rewards.</p></article>
+    </section>
+
+    <section id="vault" class="section vault-section">
+      <div class="section-head"><div><p class="eyebrow">The Vault</p><h2>52-product launch catalogue</h2><p>Fast launch setup: product cards add to My Stash, then WhatsApp checkout sends the order summary. Stripe membership is live now.</p></div><div class="filters" id="filters"></div></div>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section id="stash" class="section stash-section">
+      <div class="stash-panel"><div><p class="eyebrow">My Stash</p><h2>Cart, rewards and checkout</h2><p>Orders over £40 qualify for card exchange rewards. Product checkout uses WhatsApp for speed. Membership uses Stripe.</p></div><div id="cartItems" class="cart-items"></div><div class="cart-summary"><strong>Total: £<span id="cartTotal">0.00</span></strong><button id="whatsappCheckout" class="btn btn-primary">Checkout on WhatsApp</button><button id="clearCart" class="btn btn-ghost">Clear Stash</button></div></div>
+    </section>
+
+    <section id="cards" class="section cards-section">
+      <div class="section-head"><div><p class="eyebrow">DCBD Collectors</p><h2>Rookie cards, luxury cards and exchange rewards</h2></div></div>
+      <div class="card-rules"><article><strong>Every order</strong><span>Rookie card draw</span></article><article><strong>£40+ orders</strong><span>Exchange cards for rewards</span></article><article><strong>£1,000 lifetime spend</strong><span>Luxury card vault unlock</span></article><article><strong>No cash value</strong><span>Rewards depend on availability</span></article></div>
+      <div class="collector-layout"><div class="pack-card"><h3>Common Set 01</h3><div id="commonCards" class="mini-card-grid"></div></div><div class="exchange-card"><h3>Card Exchange</h3><ul><li><b>10 Common</b> = entry reward</li><li><b>5 Uncommon</b> = premium reward</li><li><b>2 Rare</b> = special reward</li><li><b>1 Epic</b> = premium bonus</li><li><b>Wonder Card</b> = manual approval</li></ul><p>Only valid with qualifying orders of £40+. No cash value.</p><button id="drawCard" class="btn btn-secondary">Demo Card Reveal</button><div id="cardReveal" class="reveal"></div></div></div>
+    </section>
+
+    <section id="estate" class="section estate-section">
+      <div class="estate-copy"><p class="eyebrow">Estate Born</p><h2>Community board</h2><p>Free users can read and post. Members unlock voting, private boards and better card odds. This is secondary to ecommerce, but keeps customers returning.</p><div class="board-form"><input id="postName" placeholder="Name" /><input id="postText" placeholder="Post a review, idea or card pull" /><button id="addPost" class="btn btn-secondary">Post</button></div></div><div id="boardPosts" class="board-posts"></div>
+    </section>
+
+    <section id="membership" class="section membership-section">
+      <div class="membership-card"><p class="eyebrow">Estate Born+</p><h2>£8.99/month</h2><p>Live Stripe checkout link created. Use this while product checkout launches through WhatsApp.</p><ul><li>Estate Born+ member badge</li><li>Private boards and voting</li><li>Exclusive drops and card odds</li><li>Future membership rewards</li></ul><a class="btn btn-primary" target="_blank" rel="noopener" href="https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00">Join with Stripe</a></div>
+      <div class="membership-card dark"><h3>WhatsApp support</h3><p>Need help ordering or want to confirm stock? Message DCBD directly.</p><a class="btn btn-secondary" target="_blank" rel="noopener" href="https://wa.me/447763383729?text=Hi%20DCBD%2C%20I%20want%20to%20order%20from%20the%20Vault">Message WhatsApp</a></div>
+    </section>
+  </main>
+
+  <footer><strong>DCBD • PluggdaCoffeezDank.uk</strong><span>18+ only • Legal compliance required • Product claims must be verified before publishing</span></footer>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
