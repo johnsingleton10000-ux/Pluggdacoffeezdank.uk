@@ -1,0 +1,2 @@
+Deploy trigger created by ChatGPT on 2026-06-13.
+Purpose: force Vercel to rebuild the latest main branch without changing website code.
