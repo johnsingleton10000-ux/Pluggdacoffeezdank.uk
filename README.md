@@ -1,43 +1,91 @@
-# DCBD / PluggdaCoffeezDank.uk
+# DCBD
 
-This is the fast-launch storefront build.
+Connected ecosystem foundation for membership, XP, collection, community and Flip.
 
-## What is included
+This repository is no longer a static HTML storefront. The live application is a Next.js App Router app with TypeScript, Tailwind CSS and a domain-service architecture. The previous storefront and JavaScript Next.js pages are preserved under `legacy/`.
 
-- 18+ entry gate
-- Product-first ecommerce homepage
-- 52 launch product placeholders in `products.js`
-- My Stash cart
-- WhatsApp checkout
-- Stripe membership link
-- Estate Born community board mockup
-- Rookie card demo reveal
-- Card exchange rules
-- Mobile-first responsive layout
+## Current stage
 
-## Fast Vercel deployment
+Foundation only.
 
-1. Open Vercel.
-2. Import this GitHub repository: `johnsingleton10000-ux/Pluggdacoffeezdank.uk`.
-3. Framework preset: Other / Static HTML.
-4. Build command: leave blank.
-5. Output directory: leave blank.
-6. Deploy.
+Live routes:
 
-## Stripe
+- `/` Home
+- `/account` Account sign-in and identity
+- `/education` Preserved education page
+- `/privacy` and `/terms`
 
-Current membership checkout:
+These sections are reserved in navigation and are not built yet:
 
-https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00
+Membership, Blood Test, My Avatar, My Deck, Collection, Flip, Community, Trading, Shop.
 
-Product checkout is currently via WhatsApp for quickest launch.
+## Local development
 
-## Images
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-The site currently uses CSS-generated poster cards so it will deploy without broken images.
+Then open [http://localhost:3000](http://localhost:3000).
 
-To add Cloudinary images later, add an `image` field to products in `products.js`, then update the product card template in `app.js` to use the image URL.
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
 
-## Legal/compliance note
+## Required configuration
 
-Before publishing, every product name, product claim, payment route and delivery method must be checked against UK law, Stripe rules, Vercel rules and any applicable platform policies.
+Authentication and the account profile need a Supabase project.
+
+1. Create a project at [supabase.com](https://supabase.com).
+2. Copy the project URL and anon key into `.env.local`:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. Put the service role key in `SUPABASE_SERVICE_ROLE_KEY`. Never expose this key to the browser.
+4. Run `supabase/migrations/0001_foundation.sql` in the Supabase SQL editor.
+5. Set `NEXT_PUBLIC_SITE_URL` to the deployed origin.
+
+Until those values are present, the site still runs. Account shows a configuration empty state.
+
+`STRIPE_SECRET_KEY` is reserved for a later ecommerce stage. Checkout currently returns HTTP 501.
+
+## Architecture
+
+```
+app/                 Routes and server actions
+components/          UI design system, layout, page sections
+config/              Membership tiers, navigation, archetypes, avatar slots
+types/               Domain contracts
+services/            Auth, membership, XP, Blood Test, avatar, deck, cards,
+                     ecommerce, forum, trading, Flip, AI
+lib/                 Supabase clients, env, security
+data/                Preserved launch catalogue (not a live shop)
+supabase/            Foundation migration and planned schema
+legacy/              Previous static storefront and JS pages
+public/              Existing artwork and assets
+```
+
+Business rules live in `services/` and `config/`. Visual components read tokens from CSS variables, so colours are not locked inside individual components.
+
+## Security
+
+- XP, membership and card ownership must be changed server-side.
+- Row Level Security is included in the foundation migration.
+- `record_xp_transaction` is a security-definer function granted only to `service_role`.
+- Clients may update username and display name only.
+
+## Design tokens
+
+Colours, type and radii are CSS variables in `app/globals.css`. Tailwind maps those variables rather than hard-coding brand colours in components.
+
+## Vercel
+
+Framework: Next.js. Build command: `next build`. Output directory: leave default.
+
+Do not deploy this as a static HTML project.
+
+## Legal
+
+18+ only. Educational copy is not medical advice. Product claims, payment routes and delivery methods must be checked before any shop launch.

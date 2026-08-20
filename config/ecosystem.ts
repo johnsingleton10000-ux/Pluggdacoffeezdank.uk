@@ -1,0 +1,15 @@
+export const ECOSYSTEM_LOOP = [
+  "Blood Test",
+  "Player Profile",
+  "Avatar",
+  "Starter Deck",
+  "Membership",
+  "XP",
+  "Ecommerce",
+  "Card Rewards",
+  "Collection",
+  "Trading",
+  "Community",
+  "Flip",
+  "Progression",
+] as const;
