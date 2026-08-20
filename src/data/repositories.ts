@@ -6,7 +6,7 @@ import type {
   XpAccountSummary,
   XpTransaction,
 } from "@/features/xp/domain";
-import type { EntityId } from "@/types/shared";
+import type { EntityId, ServiceResult } from "@/types/shared";
 
 export interface ProfileRepository {
   findByUserId(userId: EntityId): Promise<PlayerProfile | null>;
@@ -18,8 +18,18 @@ export interface MembershipRepository {
 
 export interface XpLedgerRepository {
   getSummary(userId: EntityId): Promise<XpAccountSummary>;
-  record(input: RecordXpTransactionInput): Promise<XpTransaction>;
-  findByIdempotencyKey(key: string): Promise<XpTransaction | null>;
+  /**
+   * The implementation must check idempotency and available balance in the
+   * same database transaction that appends the ledger entry.
+   */
+  recordAtomically(
+    input: RecordXpTransactionInput,
+  ): Promise<
+    ServiceResult<
+      XpTransaction,
+      "INSUFFICIENT_BALANCE" | "DUPLICATE_TRANSACTION"
+    >
+  >;
 }
 
 export interface BloodTestRepository {

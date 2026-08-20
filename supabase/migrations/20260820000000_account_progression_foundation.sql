@@ -111,13 +111,16 @@ alter table public.memberships enable row level security;
 alter table public.xp_transactions enable row level security;
 alter table public.blood_tests enable row level security;
 
-revoke insert, delete on public.profiles from anon, authenticated;
-revoke update on public.profiles from anon, authenticated;
-grant update (username, display_name) on public.profiles to authenticated;
+revoke all privileges on public.profiles from anon, authenticated;
+revoke all privileges on public.memberships from anon, authenticated;
+revoke all privileges on public.xp_transactions from anon, authenticated;
+revoke all privileges on public.blood_tests from anon, authenticated;
 
-revoke insert, update, delete on public.memberships from anon, authenticated;
-revoke insert, update, delete on public.xp_transactions from anon, authenticated;
-revoke insert, update, delete on public.blood_tests from anon, authenticated;
+grant select on public.profiles to authenticated;
+grant select on public.memberships to authenticated;
+grant select on public.xp_transactions to authenticated;
+grant select on public.blood_tests to authenticated;
+grant update (username, display_name) on public.profiles to authenticated;
 
 create policy "Profiles are visible to their owner"
 on public.profiles for select

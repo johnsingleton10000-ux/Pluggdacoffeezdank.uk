@@ -36,30 +36,7 @@ export function createXpLedgerService(
         };
       }
 
-      const existing = await repository.findByIdempotencyKey(
-        input.idempotencyKey,
-      );
-
-      if (existing) {
-        return {
-          ok: false,
-          code: "DUPLICATE_TRANSACTION",
-          message: "This XP transaction has already been recorded.",
-        };
-      }
-
-      if (input.kind === "debit") {
-        const summary = await repository.getSummary(input.userId);
-        if (summary.current < input.amount) {
-          return {
-            ok: false,
-            code: "INSUFFICIENT_BALANCE",
-            message: "The account does not have enough XP.",
-          };
-        }
-      }
-
-      return { ok: true, value: await repository.record(input) };
+      return repository.recordAtomically(input);
     },
   };
 }
