@@ -695,6 +695,20 @@ a:focus-visible {
   letter-spacing: 0.12em;
 }
 
+/* Compatibility utilities used by the existing storefront route. */
+.card-glow {
+  box-shadow: 0 0 70px rgba(226, 119, 67, 0.14), 0 0 40px rgba(124, 58, 237, 0.12);
+}
+
+.grit-bg {
+  background-image:
+    radial-gradient(circle at top left, rgba(226, 119, 67, 0.18), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.24), transparent 36%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: auto, auto, 42px 42px, 42px 42px;
+}
+
 @media (min-width: 820px) {
   .dcbd-account-copy {
     display: block;
