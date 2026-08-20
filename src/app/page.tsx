@@ -96,7 +96,7 @@ export default function HomePage() {
                 Stable by design
               </h2>
             </div>
-            <Badge tone="positive">Foundation ready</Badge>
+            <Badge tone="positive">Architecture baseline</Badge>
           </div>
           <div className="mt-9 grid gap-4 md:grid-cols-2">
             {foundationLayers.map((layer, index) => (

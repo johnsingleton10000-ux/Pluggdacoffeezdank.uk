@@ -18,7 +18,7 @@ export default function ErrorPage({ reset }: ErrorPageProps) {
           This screen could not load
         </h1>
         <p className="mx-auto mt-4 max-w-xl leading-7 text-text-muted">
-          Your account data has not been changed. Try loading the screen again.
+          Try loading the screen again. If the problem continues, return later.
         </p>
         <Button className="mt-7" onClick={reset}>
           Try again

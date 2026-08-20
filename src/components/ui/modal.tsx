@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type PropsWithChildren } from "react";
+import { useEffect, useId, useRef, type PropsWithChildren } from "react";
 
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +12,7 @@ interface ModalProps extends PropsWithChildren {
 
 export function Modal({ children, onClose, open, title }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -23,7 +24,7 @@ export function Modal({ children, onClose, open, title }: ModalProps) {
 
   return (
     <dialog
-      aria-labelledby="modal-title"
+      aria-labelledby={titleId}
       className="m-auto w-[min(34rem,calc(100%-2rem))] rounded-lg border-2 border-purple-300 bg-surface p-0 text-text shadow-hard backdrop:bg-black/75"
       onCancel={onClose}
       onClose={onClose}
@@ -31,7 +32,7 @@ export function Modal({ children, onClose, open, title }: ModalProps) {
     >
       <div className="border-b-2 border-line p-5">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="font-display text-2xl text-white" id="modal-title">
+          <h2 className="font-display text-2xl text-white" id={titleId}>
             {title}
           </h2>
           <Button aria-label="Close dialog" onClick={onClose} variant="quiet">

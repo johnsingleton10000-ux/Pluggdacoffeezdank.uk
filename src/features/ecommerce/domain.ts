@@ -1,11 +1,7 @@
 import type { AuditedEntity, EntityId } from "@/types/shared";
 
-export type OrderStatus =
-  | "pending"
-  | "paid"
-  | "fulfilled"
-  | "cancelled"
-  | "refunded";
+/** Provider and fulfilment status values are deliberately not fixed yet. */
+export type OrderStatus = string;
 
 export interface Order extends AuditedEntity {
   readonly userId: EntityId;

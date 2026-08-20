@@ -47,12 +47,14 @@ create table public.xp_transactions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users (id) on delete cascade,
   kind public.xp_transaction_kind not null,
-  amount bigint not null check (amount > 0),
+  amount bigint not null check (amount between 1 and 9007199254740991),
   source text not null,
   reason text not null check (char_length(reason) > 0),
   reference_id uuid,
   idempotency_key text not null unique,
-  balance_after bigint not null check (balance_after >= 0),
+  balance_after bigint not null check (
+    balance_after between 0 and 9007199254740991
+  ),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -73,9 +75,32 @@ create table public.blood_tests (
   check (jsonb_typeof(answers) = 'array'),
   check (
     strategy_scores is null
+    or case
+      when (
+        jsonb_typeof(strategy_scores) = 'object'
+        and strategy_scores ?& array['control', 'attack', 'defence']
+        and jsonb_typeof(strategy_scores -> 'control') = 'number'
+        and jsonb_typeof(strategy_scores -> 'attack') = 'number'
+        and jsonb_typeof(strategy_scores -> 'defence') = 'number'
+      )
+      then (
+        (strategy_scores ->> 'control')::numeric >= 0
+        and (strategy_scores ->> 'attack')::numeric >= 0
+        and (strategy_scores ->> 'defence')::numeric >= 0
+      )
+      else false
+    end
+  ),
+  check (
+    (
+      status = 'in_progress'
+      and strategy_scores is null
+      and completed_at is null
+    )
     or (
-      jsonb_typeof(strategy_scores) = 'object'
-      and strategy_scores ?& array['control', 'attack', 'defence']
+      status = 'completed'
+      and strategy_scores is not null
+      and completed_at is not null
     )
   )
 );
@@ -94,6 +119,18 @@ begin
 end;
 $$;
 
+create function public.prevent_xp_ledger_mutation()
+returns trigger
+language plpgsql
+set search_path = ''
+as $$
+begin
+  raise exception using
+    errcode = '55000',
+    message = 'XP ledger entries are immutable; append a correcting transaction';
+end;
+$$;
+
 create trigger profiles_set_updated_at
 before update on public.profiles
 for each row execute function public.set_updated_at();
@@ -105,6 +142,14 @@ for each row execute function public.set_updated_at();
 create trigger blood_tests_set_updated_at
 before update on public.blood_tests
 for each row execute function public.set_updated_at();
+
+create trigger xp_transactions_are_append_only
+before update or delete on public.xp_transactions
+for each row execute function public.prevent_xp_ledger_mutation();
+
+revoke execute on function public.set_updated_at() from public, anon, authenticated;
+revoke execute on function public.prevent_xp_ledger_mutation()
+  from public, anon, authenticated;
 
 alter table public.profiles enable row level security;
 alter table public.memberships enable row level security;

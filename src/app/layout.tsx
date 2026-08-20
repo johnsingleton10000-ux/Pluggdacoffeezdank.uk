@@ -30,8 +30,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
+        <a
+          className="fixed left-4 top-4 z-50 -translate-y-24 rounded-md border-2 border-purple-300 bg-ink px-4 py-3 font-bold text-white shadow-hard transition-transform focus:translate-y-0"
+          href="#main-content"
+        >
+          Skip to content
+        </a>
         <SiteHeader />
-        {children}
+        <div id="main-content" tabIndex={-1}>
+          {children}
+        </div>
         <SiteFooter />
       </body>
     </html>

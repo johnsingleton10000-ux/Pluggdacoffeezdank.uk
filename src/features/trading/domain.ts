@@ -1,11 +1,7 @@
 import type { AuditedEntity, EntityId } from "@/types/shared";
 
-export type TradeStatus =
-  | "proposed"
-  | "accepted"
-  | "declined"
-  | "cancelled"
-  | "completed";
+/** Lifecycle values will be fixed with the trading settlement specification. */
+export type TradeStatus = string;
 
 export interface TradeItem {
   readonly cardOwnershipId: EntityId;

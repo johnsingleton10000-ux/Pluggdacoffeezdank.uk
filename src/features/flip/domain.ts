@@ -1,6 +1,7 @@
 import type { AuditedEntity, EntityId } from "@/types/shared";
 
-export type FlipMatchStatus = "pending" | "active" | "completed" | "cancelled";
+/** Match lifecycle values depend on the future Flip ruleset. */
+export type FlipMatchStatus = string;
 
 export interface FlipParticipant {
   readonly userId: EntityId;

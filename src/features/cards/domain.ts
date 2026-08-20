@@ -14,8 +14,9 @@ export interface CardDefinition extends AuditedEntity {
   readonly abilities: readonly CardAbility[];
 }
 
-export type CardCollectionStatus = "owned" | "archived";
-export type CardTradeStatus = "not_tradeable" | "available" | "locked";
+/** Taxonomies remain product-owner-defined until the card specification. */
+export type CardCollectionStatus = string;
+export type CardTradeStatus = string;
 
 export interface CardOwnership extends AuditedEntity {
   readonly cardId: EntityId;

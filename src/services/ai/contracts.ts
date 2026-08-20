@@ -1,6 +1,6 @@
 import type {
   ArchetypeAssignment,
-  WeightedAnswer,
+  BloodTestScoringInput,
 } from "@/features/blood-test/domain";
 import type { AvatarDefinition } from "@/features/avatars/domain";
 import type { ServiceResult } from "@/types/shared";
@@ -12,7 +12,7 @@ export interface DeckIdentity {
 
 export interface IdentityGenerationService {
   analyseBloodTest(
-    answers: readonly WeightedAnswer[],
+    input: BloodTestScoringInput,
   ): Promise<ServiceResult<ArchetypeAssignment, "INVALID_ANSWERS" | "UNAVAILABLE">>;
 
   matchAvatar(
