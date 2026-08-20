@@ -1,43 +1,59 @@
-# DCBD / PluggdaCoffeezDank.uk
+# DCBD ecosystem
 
-This is the fast-launch storefront build.
+The production foundation for one connected DCBD player journey across
+identity, progression, collecting, community, commerce and Flip.
 
-## What is included
+This stage intentionally does **not** implement final game rules, membership
+benefits, rewards, products, payments, the complete Blood Test or an AI
+provider.
 
-- 18+ entry gate
-- Product-first ecommerce homepage
-- 52 launch product placeholders in `products.js`
-- My Stash cart
-- WhatsApp checkout
-- Stripe membership link
-- Estate Born community board mockup
-- Rookie card demo reveal
-- Card exchange rules
-- Mobile-first responsive layout
+## Stack
 
-## Fast Vercel deployment
+- Next.js App Router
+- React and strict TypeScript
+- Tailwind CSS with semantic design tokens
+- Supabase-ready SQL and Row Level Security
+- Provider-neutral domain and service contracts
 
-1. Open Vercel.
-2. Import this GitHub repository: `johnsingleton10000-ux/Pluggdacoffeezdank.uk`.
-3. Framework preset: Other / Static HTML.
-4. Build command: leave blank.
-5. Output directory: leave blank.
-6. Deploy.
+## Start locally
 
-## Stripe
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-Current membership checkout:
+No environment values are required to view the foundation page. Supabase and
+AI variables are reserved for later stages.
 
-https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00
+## Quality checks
 
-Product checkout is currently via WhatsApp for quickest launch.
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
 
-## Images
+## Structure
 
-The site currently uses CSS-generated poster cards so it will deploy without broken images.
+```text
+app/          routes, layouts and route states
+auth/         authorization contracts
+components/   reusable UI and composed foundation sections
+config/       approved product configuration
+data/         repository interfaces
+domains/      account, XP, membership, cards, decks and future systems
+services/     replaceable external-provider boundaries
+supabase/     versioned schema and RLS policies
+types/        shared primitives
+docs/         architecture decisions and extension guidance
+```
 
-To add Cloudinary images later, add an `image` field to products in `products.js`, then update the product card template in `app.js` to use the image URL.
+See [`docs/architecture.md`](docs/architecture.md) for trust boundaries,
+database staging and the process for adding each future system.
 
-## Legal/compliance note
+## Legacy files
 
-Before publishing, every product name, product claim, payment route and delivery method must be checked against UK law, Stripe rules, Vercel rules and any applicable platform policies.
+The root-level static prototype (`index.html`, `app.js`, `products.js`,
+`styles.css` and `assets/`) is retained for source history and asset recovery.
+The deployable application is the Next.js project under `app/`.
