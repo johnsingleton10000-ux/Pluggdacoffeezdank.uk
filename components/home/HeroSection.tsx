@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { site } from "@/lib/config/site";
@@ -25,10 +26,14 @@ export function HeroSection() {
           </div>
         </div>
         <div className="relative min-h-[280px] overflow-hidden rounded-[var(--radius-panel)] border-3 border-ink bg-purple-deep shadow-stamp sm:min-h-[420px]">
-          <img
+          <Image
             src="/assets/hero.svg"
             alt=""
-            className="absolute inset-0 h-full w-full object-cover opacity-80"
+            fill
+            unoptimized
+            className="object-cover opacity-80"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
           />
           <div className="absolute inset-0 bg-ink/35" />
           <div className="relative flex h-full min-h-[280px] flex-col justify-end p-6 sm:min-h-[420px] sm:p-8">

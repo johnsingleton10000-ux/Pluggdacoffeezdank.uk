@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card } from "@/components/ui/Panel";
 
 const cards = [
@@ -20,7 +21,14 @@ export function CardWallSection() {
           {cards.map((card) => (
             <Card key={card.name}>
               <div className="relative h-72 bg-ink">
-                <img src={card.image} alt={`${card.name} artwork`} className="h-full w-full object-cover" />
+                <Image
+                  src={card.image}
+                  alt={`${card.name} artwork`}
+                  fill
+                  unoptimized
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
                 <div className="absolute inset-x-0 bottom-0 bg-ink/80 p-4">
                   <p className="font-display text-xs uppercase tracking-[0.2em] text-ember">{card.label}</p>
                   <h3 className="mt-1 font-display text-2xl uppercase leading-none">{card.name}</h3>

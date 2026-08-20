@@ -8,15 +8,13 @@ import { site } from "@/lib/config/site";
 const STORAGE_KEY = "dcbd-age-ok";
 
 export function AgeGate({ children }: { children: ReactNode }) {
-  const [allowed, setAllowed] = useState<boolean | null>(null);
+  const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    setAllowed(sessionStorage.getItem(STORAGE_KEY) === "1");
+    if (sessionStorage.getItem(STORAGE_KEY) === "1") {
+      setAllowed(true);
+    }
   }, []);
-
-  if (allowed === null) {
-    return <div className="min-h-dvh bg-canvas" aria-hidden="true" />;
-  }
 
   if (allowed) return children;
 
