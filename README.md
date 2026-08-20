@@ -1,5 +1,17 @@
 # DCBD / PluggdaCoffeezDank.uk
 
+## DCBD foundation
+
+The Next.js application now includes a foundation dashboard at
+[`/foundation`](http://localhost:3000/foundation). It establishes the DCBD
+ecosystem shell, reusable design system, shared domain contracts, server-side
+service boundaries, and a Supabase/RLS database migration without implementing
+future product rules.
+
+See [`docs/architecture.md`](docs/architecture.md) for the folder boundaries
+and configuration steps. Copy `.env.example` to `.env.local` when connecting
+Supabase or server-side providers.
+
 This is the fast-launch storefront build.
 
 ## What is included
