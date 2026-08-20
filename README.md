@@ -1,43 +1,49 @@
-# DCBD / PluggdaCoffeezDank.uk
+# DCBD ecosystem
 
-This is the fast-launch storefront build.
+The production foundation for a connected DCBD player, progression, card,
+community, commerce, and future Flip experience. It is intentionally a
+foundation, not placeholder implementations of unspecified features.
 
-## What is included
+## Stack
 
-- 18+ entry gate
-- Product-first ecommerce homepage
-- 52 launch product placeholders in `products.js`
-- My Stash cart
-- WhatsApp checkout
-- Stripe membership link
-- Estate Born community board mockup
-- Rookie card demo reveal
-- Card exchange rules
-- Mobile-first responsive layout
+- Next.js App Router, React, and strict TypeScript
+- Tailwind CSS with central design tokens
+- Provider-neutral authentication, data, and AI service contracts
+- Supabase-ready SQL with Row Level Security
+- Vitest and ESLint
 
-## Fast Vercel deployment
+## Local development
 
-1. Open Vercel.
-2. Import this GitHub repository: `johnsingleton10000-ux/Pluggdacoffeezdank.uk`.
-3. Framework preset: Other / Static HTML.
-4. Build command: leave blank.
-5. Output directory: leave blank.
-6. Deploy.
+Requires Node.js 20.9 or newer.
 
-## Stripe
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-Current membership checkout:
+Open <http://localhost:3000>.
 
-https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00
+## Quality checks
 
-Product checkout is currently via WhatsApp for quickest launch.
+```bash
+npm run check
+npm run build
+```
 
-## Images
+## Configuration
 
-The site currently uses CSS-generated poster cards so it will deploy without broken images.
+`NEXT_PUBLIC_SITE_URL` is the only value needed for the current interface.
+Supabase variables in `.env.example` are intentionally empty until a project
+and authentication stage are approved. Never place service-role, payment, AI,
+or webhook secrets in a `NEXT_PUBLIC_*` variable.
 
-To add Cloudinary images later, add an `image` field to products in `products.js`, then update the product card template in `app.js` to use the image URL.
+## Architecture
 
-## Legal/compliance note
+See [`docs/architecture.md`](docs/architecture.md) for system boundaries,
+persistence scope, security rules, planned relationships, and explicitly
+deferred decisions.
 
-Before publishing, every product name, product claim, payment route and delivery method must be checked against UK law, Stripe rules, Vercel rules and any applicable platform policies.
+The existing static storefront source and supplied artwork remain in the
+repository as legacy/reference material. The active application is under
+`src/`.
