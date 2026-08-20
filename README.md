@@ -1,43 +1,70 @@
-# DCBD / PluggdaCoffeezDank.uk
+# DCBD
 
-This is the fast-launch storefront build.
+DCBD is a connected ecosystem: ecommerce, membership, community, XP, collectible cards, trading and Flip.
 
-## What is included
+This repository currently contains the **technical foundation only**. Shop checkout, forum, Flip rules, Blood Test questions, the 20 avatars, card mechanics, trading and subscriptions are not implemented yet.
 
-- 18+ entry gate
-- Product-first ecommerce homepage
-- 52 launch product placeholders in `products.js`
-- My Stash cart
-- WhatsApp checkout
-- Stripe membership link
-- Estate Born community board mockup
-- Rookie card demo reveal
-- Card exchange rules
-- Mobile-first responsive layout
+## Stack
 
-## Fast Vercel deployment
+- Next.js 14 App Router
+- TypeScript (strict)
+- Tailwind CSS with design tokens
+- Supabase-ready auth and Postgres schema
+- Stripe route preserved from the previous storefront, unused by the new UI
 
-1. Open Vercel.
-2. Import this GitHub repository: `johnsingleton10000-ux/Pluggdacoffeezdank.uk`.
-3. Framework preset: Other / Static HTML.
-4. Build command: leave blank.
-5. Output directory: leave blank.
-6. Deploy.
+## Run locally
 
-## Stripe
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-Current membership checkout:
+Open [http://localhost:3000](http://localhost:3000).
 
-https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
 
-Product checkout is currently via WhatsApp for quickest launch.
+## What this foundation includes
 
-## Images
+- Design system: colours, type, buttons, panels, cards, badges, nav, modals, forms, XP display, rarity indicators
+- Mobile-first shell with live Home / Account navigation and later sections listed, not built
+- Domain modules under `domains/` for membership, XP ledger, Blood Test scoring, avatars, decks, cards, ecommerce rewards hooks, forum, trading, Flip and an AI provider abstraction
+- Server-side services that refuse to trust client XP, membership or ownership
+- Supabase SQL + RLS in `supabase/migrations/0001_dcbd_foundation.sql`
+- Existing artwork, product placeholders and the previous static storefront kept under `legacy/` and `assets/`
 
-The site currently uses CSS-generated poster cards so it will deploy without broken images.
+## Configuration still required
 
-To add Cloudinary images later, add an `image` field to products in `products.js`, then update the product card template in `app.js` to use the image URL.
+| Variable | Where | Purpose |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | `.env.local` | Auth and database |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `.env.local` | Browser/server user client |
+| `SUPABASE_SERVICE_ROLE_KEY` | `.env.local` (server only) | XP ledger writes and privileged jobs |
+| `STRIPE_SECRET_KEY` | `.env.local` (server only) | Existing `/api/checkout` route |
+| `NEXT_PUBLIC_SITE_URL` | `.env.local` | Checkout return URLs |
 
-## Legal/compliance note
+After creating a Supabase project, run `supabase/migrations/0001_dcbd_foundation.sql` in the SQL editor.
 
-Before publishing, every product name, product claim, payment route and delivery method must be checked against UK law, Stripe rules, Vercel rules and any applicable platform policies.
+The app boots without these values. Authentication, profiles and XP persistence stay inactive until they are set.
+
+## Layout for later agents
+
+```
+app/                 routes and API
+components/ui/       design system
+components/layout/   shell, nav, age gate
+domains/             business logic, no UI
+lib/auth/            Supabase clients and session
+lib/data/            server data access
+lib/services/        XP, membership, profile
+lib/security/        authorization helpers
+lib/config/          site, nav, feature flags
+supabase/migrations  database and RLS
+legacy/              previous static storefront, preserved
+```
+
+Do not invent game rules, membership benefits, XP amounts, Blood Test questions, avatars or product prices in later work unless the product owner specifies them.
