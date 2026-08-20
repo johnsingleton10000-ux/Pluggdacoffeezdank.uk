@@ -82,9 +82,15 @@ Colours, type and radii are CSS variables in `app/globals.css`. Tailwind maps th
 
 ## Vercel
 
-Framework: Next.js. Build command: `next build`. Output directory: leave default.
+This is a Next.js app. In each Vercel project connected to this repo:
 
-Do not deploy this as a static HTML project.
+1. Framework Preset: **Next.js**
+2. Build Command: `next build` (or leave the Next.js default)
+3. Output Directory: leave empty / default (do not set `public` or `.`)
+4. Install Command: `npm install`
+5. Turn **off** dashboard overrides that were used for the old static HTML storefront
+
+A `vercel.json` in the repo forces the Next.js framework and build command so preview deploys are not treated as static HTML.
 
 ## Legal
 
