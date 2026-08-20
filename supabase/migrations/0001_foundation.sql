@@ -232,7 +232,8 @@ using (
 );
 
 revoke insert, update, delete
-  on public.membership_tiers,
+  on public.profiles,
+     public.membership_tiers,
      public.profile_memberships,
      public.xp_transactions,
      public.blood_test_submissions,
