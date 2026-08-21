@@ -1,43 +1,59 @@
-# DCBD / PluggdaCoffeezDank.uk
+# DCBD Estate
 
-This is the fast-launch storefront build.
+DCBD is a Next.js application that connects the brand's commerce, membership,
+AI onboarding, collectible cards, deck identity, Flip Three and community
+concepts through one visual system.
 
-## What is included
+## Current build
 
-- 18+ entry gate
-- Product-first ecommerce homepage
-- 52 launch product placeholders in `products.js`
-- My Stash cart
-- WhatsApp checkout
-- Stripe membership link
-- Estate Born community board mockup
-- Rookie card demo reveal
-- Card exchange rules
-- Mobile-first responsive layout
+This iteration delivers the Foundation and Home stages:
 
-## Fast Vercel deployment
+- responsive DCBD navigation and 18+ entry gate
+- reusable dark-luxury, graffiti and collectible-card design system
+- featured Vault catalogue sourced from the supplied product data
+- product-to-card-to-game reward-flow explanation
+- deterministic onboarding/profile preview for Attack, Control and Defence
+- Estate identity and progression dashboard
+- collectible card collection and interactive Flip Three preview
+- backend-configured membership presentation
+- community activity and direct WhatsApp contact
+- reduced-motion and touchscreen-friendly responsive states
 
-1. Open Vercel.
-2. Import this GitHub repository: `johnsingleton10000-ux/Pluggdacoffeezdank.uk`.
-3. Framework preset: Other / Static HTML.
-4. Build command: leave blank.
-5. Output directory: leave blank.
-6. Deploy.
+Authentication, persistent card ownership, XP transactions, AI generation,
+authoritative checkout, trading and multiplayer game state are intentionally
+left for their respective backend phases. The browser does not determine final
+prices, entitlement, ownership or reward issuance.
 
-## Stripe
+## Local development
 
-Current membership checkout:
+```bash
+npm install
+npm run dev
+```
 
-https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00
+Open `http://localhost:3000`.
 
-Product checkout is currently via WhatsApp for quickest launch.
+## Production
 
-## Images
+```bash
+npm run build
+npm start
+```
 
-The site currently uses CSS-generated poster cards so it will deploy without broken images.
+The application uses the Next.js App Router and is Vercel-compatible. Configure
+server-side secrets in the deployment environment; never expose secret keys in
+client-side environment variables.
 
-To add Cloudinary images later, add an `image` field to products in `products.js`, then update the product card template in `app.js` to use the image URL.
+## Project map
 
-## Legal/compliance note
+- `app/` — routes, metadata, global design system and server endpoints
+- `components/DcbdWorld.js` — interactive ecosystem sections
+- `lib/dcbd-data.js` — shared navigation, product and collection data
+- `public/images/` — repository-hosted collectible artwork
+- `app/api/checkout/route.js` — server-only Stripe session example
 
-Before publishing, every product name, product claim, payment route and delivery method must be checked against UK law, Stripe rules, Vercel rules and any applicable platform policies.
+## Compliance
+
+All product names, claims, payment routes and delivery methods must be reviewed
+against current UK law and platform policies before public release. The site is
+18+ and makes no medical claims.

@@ -21,3 +21,19 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+# Next.js and local tooling
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+
+# Local environment and logs
+.env
+.env*.local
+*.log
+
+# Generated AI-agent guidance
+AGENTS.md
+CLAUDE.md
