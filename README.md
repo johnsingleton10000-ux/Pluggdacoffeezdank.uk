@@ -1,43 +1,68 @@
-# DCBD / PluggdaCoffeezDank.uk
+# DCBD / Da Cofeez Dank
 
-This is the fast-launch storefront build.
+Connected ecosystem site for **PluggdaCoffeezDank.uk**.
 
-## What is included
+This is not a generic shop template. The live site is a DCBD world: Vault commerce, Estate membership, AI Blood Test, avatars, decks, cards, XP, Flip Three, trading and community — one visual language.
 
-- 18+ entry gate
-- Product-first ecommerce homepage
-- 52 launch product placeholders in `products.js`
-- My Stash cart
-- WhatsApp checkout
-- Stripe membership link
-- Estate Born community board mockup
-- Rookie card demo reveal
-- Card exchange rules
-- Mobile-first responsive layout
+## What is live
 
-## Fast Vercel deployment
+- 18+ age gate
+- Home universe (graffiti hero, vault carousel, Blood Seat plaque)
+- Shop + vaults using the original 52-product launch catalogue and prices
+- Product pages as collectible cards
+- My Stash / waistband with **server-priced** WhatsApp checkout
+- Estate Born+ membership at **£8.99/month** (existing Stripe link)
+- Personality Blood Test (server-side scoring → avatar + starter deck)
+- Account, My Deck, Cards, Flip Three, Community, Trading
+- Education, privacy, terms
+- Existing DCBD SVG artwork preserved in `public/`
 
-1. Open Vercel.
-2. Import this GitHub repository: `johnsingleton10000-ux/Pluggdacoffeezdank.uk`.
-3. Framework preset: Other / Static HTML.
-4. Build command: leave blank.
-5. Output directory: leave blank.
-6. Deploy.
+## What was preserved
 
-## Stripe
+Legacy storefront files live in `legacy/storefront/` (do not delete). Catalogue prices were copied from `products.js`, not invented.
 
-Current membership checkout:
+## Architecture
 
-https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00
+```
+USER
+├── MEMBERSHIP
+├── PROFILE / ESTATE NAME
+├── AVATAR (Blood Test)
+├── DECK
+├── CARD COLLECTION
+├── XP LEDGER
+├── PURCHASE HISTORY (WhatsApp / Stripe)
+├── REWARDS
+├── TRADES
+└── GAME HISTORY
+```
 
-Product checkout is currently via WhatsApp for quickest launch.
+Shop, game, membership, cards and XP are separate modules. The shop still works if Flip Three is idle.
 
-## Images
+Prices, checkout totals and Blood Test results are computed on the server. The browser can display them; it is not the source of truth.
 
-The site currently uses CSS-generated poster cards so it will deploy without broken images.
+## Stack
 
-To add Cloudinary images later, add an `image` field to products in `products.js`, then update the product card template in `app.js` to use the image URL.
+Next.js 14 · React 18 · Tailwind CSS · Framer Motion · Stripe (membership) · WhatsApp (product orders)
 
-## Legal/compliance note
+Supabase schema is in `supabase/migrations/` for when credentials are attached. Local player state currently persists in the browser so the loop is playable without a database.
 
-Before publishing, every product name, product claim, payment route and delivery method must be checked against UK law, Stripe rules, Vercel rules and any applicable platform policies.
+## Develop
+
+```bash
+npm install
+npm run dev
+```
+
+```bash
+npm run build
+npm run typecheck
+```
+
+## Environment
+
+See `.env.example`. `STRIPE_SECRET_KEY` is only required for the programmatic Stripe session route. The live Estate Born+ payment link already exists.
+
+## Compliance
+
+18+ only. Follow UK law. Product claims, payment routes and delivery methods must be verified before public sale.
