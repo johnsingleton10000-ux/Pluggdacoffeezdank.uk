@@ -1,7 +1,8 @@
+import Image from "next/image";
+import Link from "next/link";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { Badge } from "@/components/ui/Badge";
 import { PRODUCTS, VAULTS } from "@/data/products";
-import Link from "next/link";
 
 export default function ShopPage() {
   return (
@@ -14,7 +15,9 @@ export default function ShopPage() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {VAULTS.map((vault) => (
           <Link key={vault.id} href={`/shop/${vault.id}`} className="overflow-hidden rounded-2xl border border-white/10 bg-black">
-            {vault.artwork ? <img src={vault.artwork} alt="" className="h-32 w-full object-cover" /> : null}
+            {vault.artwork ? (
+              <Image src={vault.artwork} alt="" width={640} height={256} unoptimized className="h-32 w-full object-cover" />
+            ) : null}
             <div className="p-4">
               <h2 className="font-display text-2xl uppercase" style={{ color: vault.glow }}>{vault.name}</h2>
               <p className="mt-2 text-sm text-muted">{vault.blurb}</p>

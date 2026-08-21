@@ -11,8 +11,9 @@ const FILTERS = ["all", "owned", "common", "uncommon", "rare", "epic", "wonder"]
 export default function CardsPage() {
   const { profile } = useEstate();
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("all");
-  const owned = new Set(profile.collection.map((item) => item.cardId));
-  const inDeck = new Set(profile.starterCardIds);
+  const ownedIds = profile.collection.map((item) => item.cardId).join("|");
+  const owned = useMemo(() => new Set(ownedIds.split("|").filter(Boolean)), [ownedIds]);
+  const inDeck = useMemo(() => new Set(profile.starterCardIds), [profile.starterCardIds]);
   const cards = useMemo(() => {
     return CARD_CATALOGUE.filter((card) => {
       if (filter === "all") return true;
