@@ -1,43 +1,55 @@
-# DCBD / PluggdaCoffeezDank.uk
+# DCBD Estate
 
-This is the fast-launch storefront build.
+The active DCBD website is a Next.js App Router application that establishes the visual and structural foundation for the connected DCBD ecosystem.
 
-## What is included
+## Current scope
 
-- 18+ entry gate
-- Product-first ecommerce homepage
-- 52 launch product placeholders in `products.js`
-- My Stash cart
-- WhatsApp checkout
-- Stripe membership link
-- Estate Born community board mockup
-- Rookie card demo reveal
-- Card exchange rules
-- Mobile-first responsive layout
+This branch implements Phase 1 and Phase 2:
 
-## Fast Vercel deployment
+- reusable DCBD design system
+- responsive site shell, navigation and age gate
+- DCBD world homepage
+- commerce vault architecture preview
+- AI alignment and avatar onboarding preview
+- collectible card and deck connection
+- Flip Three arena preview
+- membership entitlement preview
+- community architecture preview
 
-1. Open Vercel.
-2. Import this GitHub repository: `johnsingleton10000-ux/Pluggdacoffeezdank.uk`.
-3. Framework preset: Other / Static HTML.
-4. Build command: leave blank.
-5. Output directory: leave blank.
-6. Deploy.
+Live commerce, authentication, memberships, AI assignment, card ownership, XP, gameplay and community posting are intentionally deferred until their server-side systems are connected.
 
-## Stripe
+## Local development
 
-Current membership checkout:
+```bash
+npm install
+npm run dev
+```
 
-https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00
+Open [http://localhost:3000](http://localhost:3000).
 
-Product checkout is currently via WhatsApp for quickest launch.
+## Verification
 
-## Images
+```bash
+npm run build
+npm audit
+```
 
-The site currently uses CSS-generated poster cards so it will deploy without broken images.
+## Environment variables
 
-To add Cloudinary images later, add an `image` field to products in `products.js`, then update the product card template in `app.js` to use the image URL.
+Copy `.env.example` to `.env.local` and supply deployment values:
 
-## Legal/compliance note
+- `NEXT_PUBLIC_SITE_URL`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_FOUNDER_PRICE_ID`
 
-Before publishing, every product name, product claim, payment route and delivery method must be checked against UK law, Stripe rules, Vercel rules and any applicable platform policies.
+Stripe prices remain authoritative in Stripe. The checkout route accepts a configured Stripe Price ID and does not trust or hard-code a browser-supplied amount.
+
+## Deployment
+
+Deploy with the Vercel **Next.js** framework preset. The committed `vercel.json` identifies the active application as Next.js.
+
+The root-level `index.html`, `styles.css`, `app.js` and `products.js` belong to the earlier static storefront prototype. They remain in the repository as legacy reference material and are not the active deployment target.
+
+## Product and pricing status
+
+The legacy catalogue contains placeholders and must not be treated as authoritative inventory. The active UI deliberately avoids presenting placeholder products or prices as live. Future catalogue data, availability, discounts and reward eligibility must come from the configured commerce backend and be validated server-side.
