@@ -66,6 +66,7 @@ export default function Home() {
         <div className="hidden md:flex gap-6 text-sm uppercase text-zinc-300 font-bold">
           <a href="#story">Story</a>
           <a href="#gallery">Gallery</a>
+          <a href="/catalog" className="text-lime-400">Catalog</a>
           <a href="#membership">Membership</a>
           <a href="#contact">Contact</a>
         </div>
@@ -116,6 +117,9 @@ export default function Home() {
           <p className="mt-5 text-zinc-400 max-w-3xl">These images are now committed inside the repo at public/images, so Vercel can deploy them with the site.</p>
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {cards.map((card) => <CardImage key={card.name} card={card} />)}
+          </div>
+          <div className="mt-10">
+            <a href="/catalog" className="inline-flex rounded-full bg-gradient-to-r from-orange-500 via-lime-400 to-purple-500 px-8 py-4 text-black font-black uppercase tracking-wide">Open The Flip Three Catalog →</a>
           </div>
         </div>
       </section>
