@@ -2,11 +2,16 @@ import Stripe from "stripe";
 
 export async function POST() {
   try {
-    if (!process.env.STRIPE_SECRET_KEY) {
-      return Response.json({ error: "Missing STRIPE_SECRET_KEY in Vercel environment variables." }, { status: 500 });
+    const { STRIPE_SECRET_KEY, STRIPE_FOUNDER_PRICE_ID } = process.env;
+
+    if (!STRIPE_SECRET_KEY || !STRIPE_FOUNDER_PRICE_ID) {
+      return Response.json(
+        { error: "Checkout is not configured." },
+        { status: 503 },
+      );
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = new Stripe(STRIPE_SECRET_KEY);
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pluggdacoffeezdank.uk";
 
     const session = await stripe.checkout.sessions.create({
@@ -14,14 +19,7 @@ export async function POST() {
       payment_method_types: ["card"],
       line_items: [
         {
-          price_data: {
-            currency: "gbp",
-            product_data: {
-              name: "DCBD Inner Circle Founder Entry",
-              description: "Community membership, early art previews, private updates and future rewards.",
-            },
-            unit_amount: 2500,
-          },
+          price: STRIPE_FOUNDER_PRICE_ID,
           quantity: 1,
         },
       ],

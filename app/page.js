@@ -1,145 +1,412 @@
-"use client";
+import Image from "next/image";
+import { AgeGate } from "../components/age-gate";
+import { SiteHeader } from "../components/site-header";
+import {
+  ArrowIcon,
+  Bolt,
+  Crown,
+  DcbdButton,
+  InfinityMark,
+  Kicker,
+  RivetFrame,
+  SectionTitle,
+} from "../components/dcbd-ui";
+import {
+  alignments,
+  collectibleCards,
+  ecosystemSteps,
+  footerNavigation,
+  vaults,
+} from "../lib/dcbd-world";
 
-import { useState } from "react";
-
-const phone = "447763383729";
-const email = "johnsingleton10000@gmail.com";
-
-const cards = [
-  { name: "Blueberry Slush", label: "Special Edition", image: "/images/blueberry-slush-card.svg", emoji: "🫐" },
-  { name: "Wedding Cake Reserve", label: "Founder Drop", image: "/images/wedding-cake-card.svg", emoji: "🍰" },
-  { name: "Temple Ball Reserve", label: "Legendary", image: "/images/temple-ball-card.svg", emoji: "🟤" },
-  { name: "Danish Crumble", label: "Rare Card", image: "/images/danish-crumble-card.svg", emoji: "💎" },
-];
-
-function CardImage({ card }) {
-  const [broken, setBroken] = useState(false);
+function HeroCard({ className, label, title, stat }) {
   return (
-    <div className="relative h-80 overflow-hidden rounded-[2rem] border border-white/10 bg-black card-glow">
-      {!broken && <img src={card.image} alt={`${card.name} artwork`} onError={() => setBroken(true)} className="absolute inset-0 h-full w-full object-cover" />}
-      {broken && <div className="absolute inset-0 flex items-center justify-center text-7xl">{card.emoji}</div>}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 p-6">
-        <p className="text-xs font-black uppercase tracking-[0.35em] text-orange-300">{card.label}</p>
-        <h3 className="mt-2 text-3xl font-black uppercase leading-none">{card.name}</h3>
-      </div>
+    <div className={`hero-card ${className}`}>
+      <span>{label}</span>
+      <strong>{title}</strong>
+      <small>{stat}</small>
+      <InfinityMark />
     </div>
   );
 }
 
-export default function Home() {
-  const [entered, setEntered] = useState(false);
-
-  if (!entered) {
-    return (
-      <main className="min-h-screen bg-[#050505] text-[#F8F5F0] overflow-hidden">
-        <section className="min-h-screen flex items-center justify-center px-5 py-16 bg-black grit-bg">
-          <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 items-center">
-            <div className="relative min-h-[470px] rounded-[2rem] border border-white/10 bg-gradient-to-br from-orange-500/40 via-purple-600/30 to-black card-glow overflow-hidden">
-              <div className="absolute inset-0 grit-bg opacity-70" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                <p className="text-orange-300 tracking-[0.4em] uppercase font-black text-sm">18GATE</p>
-                <h2 className="mt-5 text-6xl md:text-8xl font-black uppercase leading-none">Adult Entry</h2>
-                <p className="mt-6 max-w-lg text-zinc-300">DCBD artwork gallery, founder story and adult-only brand universe.</p>
-              </div>
-            </div>
-            <div className="rounded-[2rem] border border-orange-500/30 bg-black/80 p-8 md:p-12 card-glow backdrop-blur-xl">
-              <p className="text-orange-400 tracking-[0.4em] uppercase font-black text-sm">18+ Entry • DCBD Universe</p>
-              <h1 className="mt-5 text-5xl md:text-7xl font-black uppercase leading-none">Pluggd Coffee & Dank</h1>
-              <p className="mt-6 text-zinc-300 text-lg md:text-2xl max-w-3xl">Manchester grit, Amsterdam lounge energy, collectible artwork cards and The Individual Cannabinoid Revolution.</p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <button onClick={() => setEntered(true)} className="rounded-full bg-orange-500 px-8 py-4 text-black font-black uppercase hover:bg-orange-400 transition">I Am 18+ Enter</button>
-                <a href={`https://wa.me/${phone}`} target="_blank" rel="noopener noreferrer" className="rounded-full border border-purple-400 bg-purple-500/10 px-8 py-4 font-black uppercase text-center">WhatsApp</a>
-              </div>
-              <p className="mt-6 text-xs text-zinc-500">18+ only. Responsible information only. No medical claims.</p>
-            </div>
-          </div>
-        </section>
-      </main>
-    );
-  }
-
+function Hero() {
   return (
-    <main className="min-h-screen bg-[#050505] text-[#F8F5F0] overflow-hidden">
-      <nav className="sticky top-0 z-50 bg-black/85 backdrop-blur border-b border-white/10 px-5 py-4 flex items-center justify-between">
-        <a href="#top" className="font-black tracking-widest uppercase">DCBD</a>
-        <div className="hidden md:flex gap-6 text-sm uppercase text-zinc-300 font-bold">
-          <a href="#story">Story</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#membership">Membership</a>
-          <a href="#contact">Contact</a>
+    <section id="top" className="hero">
+      <div className="hero__splatter hero__splatter--pink" />
+      <div className="hero__splatter hero__splatter--lime" />
+      <div className="estate-container hero__layout">
+        <div className="hero__copy">
+          <Kicker tone="gold">Welcome to the DCBD Estate</Kicker>
+          <h1>
+            <span className="hero__line hero__line--pink">Da Coffeez</span>
+            <span className="hero__line hero__line--cyan">Dank</span>
+            <span className="hero__stamp">DCBD</span>
+          </h1>
+          <p className="hero__manifesto">Commerce. Characters. Cards. Culture.</p>
+          <p className="hero__intro">
+            A connected collectible world born from Manchester grit—where what you discover,
+            collect and play all feeds one Estate identity.
+          </p>
+          <div className="hero__actions">
+            <DcbdButton href="#vaults">Enter the vault <ArrowIcon /></DcbdButton>
+            <DcbdButton href="#identity" tone="purple">Find your alignment</DcbdButton>
+          </div>
+          <div className="hero__proof">
+            <span><InfinityMark /> One identity</span>
+            <span><Bolt /> Earn & evolve</span>
+            <span><Crown /> Estate born</span>
+          </div>
         </div>
-        <a href={`https://wa.me/${phone}`} target="_blank" rel="noopener noreferrer" className="rounded-full bg-green-500 px-4 py-2 text-black font-black">WhatsApp</a>
-      </nav>
 
-      <section id="top" className="min-h-[92vh] flex items-center px-5 py-20 bg-black grit-bg">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <p className="text-orange-400 tracking-[0.35em] uppercase font-black text-sm">Manchester Grit × Amsterdam Lounge</p>
-            <h1 className="mt-5 text-6xl md:text-8xl font-black uppercase leading-none">Pluggd Coffee <br />& Dank</h1>
-            <p className="mt-7 text-zinc-300 text-xl md:text-2xl max-w-3xl">More than a plain website. Every card is education, every artwork has a story, and every visitor enters the DCBD universe.</p>
-            <div className="mt-9 flex flex-col sm:flex-row gap-4">
-              <a href="#gallery" className="rounded-full bg-orange-500 px-8 py-4 text-black font-black uppercase text-center">View Artwork</a>
-              <a href="#story" className="rounded-full border border-white/20 bg-white/5 px-8 py-4 font-black uppercase text-center">Read The Story</a>
+        <div className="hero__visual" aria-label="DCBD collectible world preview">
+          <div className="hero__orbit hero__orbit--one" />
+          <div className="hero__orbit hero__orbit--two" />
+          <div className="hero__character">
+            <div className="hero__hood" />
+            <div className="hero__face">
+              <span />
+              <span />
+            </div>
+            <div className="hero__body">
+              <Crown />
+              <b>ESTATE</b>
             </div>
           </div>
-          <div className="relative min-h-[470px] rounded-[2rem] border border-white/10 bg-gradient-to-br from-purple-600/40 via-orange-500/30 to-black card-glow overflow-hidden">
-            <div className="absolute inset-0 grit-bg opacity-70" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-              <p className="text-orange-300 uppercase tracking-[0.4em] font-black">Hero Visual</p>
-              <h2 className="mt-4 text-5xl md:text-7xl font-black uppercase">DCBD Universe</h2>
-              <p className="mt-5 max-w-lg text-zinc-300">Built from founder story, community energy and collectible card-style artwork.</p>
+          <HeroCard className="hero-card--left" label="Deck class" title="Control" stat="Silent strategist" />
+          <HeroCard className="hero-card--right" label="Estate status" title="Founder" stat="Access unlocked" />
+          <div className="hero__level">
+            <span>Estate level</span>
+            <strong>∞</strong>
+            <i><b /></i>
+          </div>
+          <p className="hero__visual-caption">Your character. Your deck. Your story.</p>
+        </div>
+      </div>
+      <a href="#ecosystem" className="scroll-cue" aria-label="Scroll to explore">
+        <span>Enter the world</span>
+        <i />
+      </a>
+    </section>
+  );
+}
+
+function Ecosystem() {
+  return (
+    <section id="ecosystem" className="world-section ecosystem-section">
+      <div className="estate-container">
+        <SectionTitle
+          eyebrow="One world • every move connected"
+          title={<>The DCBD <em>cycle</em></>}
+          copy="The store is the entrance, not the ending. Every system is designed to connect through one account while remaining technically independent."
+          align="center"
+        />
+        <div className="ecosystem-grid">
+          {ecosystemSteps.map((step) => (
+            <article key={step.number} className={`ecosystem-card ecosystem-card--${step.tone}`}>
+              <span className="ecosystem-card__number">{step.number}</span>
+              <div className="ecosystem-card__icon">
+                {step.number === "01" && "◇"}
+                {step.number === "02" && <Crown />}
+                {step.number === "03" && "♟"}
+                {step.number === "04" && <Bolt />}
+              </div>
+              <h3>{step.title}</h3>
+              <p>{step.copy}</p>
+              <i className="ecosystem-card__connector"><ArrowIcon /></i>
+            </article>
+          ))}
+        </div>
+        <div className="system-rail">
+          <span>Product</span><i />
+          <span>Reward card</span><i />
+          <span>Collection</span><i />
+          <span>Deck</span><i />
+          <span>Play & progress</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VaultVisual({ type }) {
+  return (
+    <div className={`vault-visual vault-visual--${type}`} aria-hidden="true">
+      {type === "flower" && <><i /><i /><i /><i /><b /></>}
+      {type === "crystal" && <><i /><i /><i /><i /><i /></>}
+      {type === "herbal" && <><i /><i /><i /><b /></>}
+      {type === "merch" && <><i /><b>DCBD</b></>}
+    </div>
+  );
+}
+
+function Vaults() {
+  return (
+    <section id="vaults" className="world-section vault-section">
+      <div className="estate-container">
+        <div className="split-heading">
+          <SectionTitle
+            eyebrow="Physical goods • digital rewards"
+            title={<>Enter the <em>vaults</em></>}
+            copy="Explore the collection architecture. Live products, availability and authoritative pricing will come from the commerce backend—never from browser-controlled values."
+          />
+          <div className="vault-key">
+            <span>Vault protocol</span>
+            <strong>Purchase → Reward → Collection</strong>
+          </div>
+        </div>
+        <div className="vault-grid">
+          {vaults.map((vault) => (
+            <article className="vault-card" key={vault.name}>
+              <div className="vault-card__top">
+                <span>{vault.code}</span>
+                <small>{vault.status}</small>
+              </div>
+              <VaultVisual type={vault.visual} />
+              <div className="vault-card__body">
+                <p>{vault.description}</p>
+                <h3>{vault.name}</h3>
+                <span className="vault-card__action">Explore collection <ArrowIcon /></span>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="availability-note">
+          <span>!</span> No placeholder products or prices are being presented as live inventory.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function Identity() {
+  return (
+    <section id="identity" className="world-section identity-section">
+      <div className="estate-container">
+        <SectionTitle
+          eyebrow="AI onboarding • estate identity"
+          title={<>What&apos;s in your <em>blood?</em></>}
+          copy="Three behavioural directions form the foundation of each player profile. The production onboarding will score real answers and support hybrid alignments—it will not assign identities at random."
+          align="center"
+        />
+        <div className="alignment-grid">
+          {alignments.map((alignment, index) => (
+            <RivetFrame className={`alignment-card alignment-card--${alignment.className}`} key={alignment.name}>
+              <span className="alignment-card__index">0{index + 1}</span>
+              <div className="alignment-card__sigil">
+                {alignment.className === "attack" && <Bolt />}
+                {alignment.className === "control" && <InfinityMark />}
+                {alignment.className === "defence" && <span>⬟</span>}
+              </div>
+              <p>{alignment.subtitle}</p>
+              <h3>{alignment.name}</h3>
+              <div className="alignment-card__art">
+                <i /><i /><i />
+              </div>
+              <p className="alignment-card__description">{alignment.description}</p>
+              <ul>
+                {alignment.stats.map((stat) => <li key={stat}>{stat}</li>)}
+              </ul>
+            </RivetFrame>
+          ))}
+        </div>
+        <div className="identity-callout">
+          <div>
+            <Crown />
+            <span>Estate blood test</span>
+          </div>
+          <p>Questions → alignment → stock avatar → starter deck identity</p>
+          <DcbdButton disabled tone="purple">Onboarding coming next</DcbdButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Cards() {
+  return (
+    <section id="cards" className="world-section cards-section">
+      <div className="estate-container cards-layout">
+        <div className="cards-copy">
+          <Kicker tone="gold">DCBD collectibles</Kicker>
+          <h2>Products open doors.<br /><em>Cards build legends.</em></h2>
+          <p>
+            Qualifying purchases can connect to verified digital rewards. Collection ownership,
+            rarity, deck state and future trades belong to server-validated systems.
+          </p>
+          <ul className="feature-list">
+            <li><span>01</span><div><strong>Collect</strong><small>Build a personal card vault</small></div></li>
+            <li><span>02</span><div><strong>Build</strong><small>Shape a deck around your identity</small></div></li>
+            <li><span>03</span><div><strong>Trade</strong><small>Future ownership-safe exchanges</small></div></li>
+          </ul>
+          <DcbdButton href="#deck" tone="purple">See how decks connect <ArrowIcon /></DcbdButton>
+        </div>
+        <div className="card-fan">
+          {collectibleCards.slice(0, 3).map((card, index) => (
+            <article className={`collectible collectible--${index + 1}`} key={card.name}>
+              <Image src={card.image} alt={`${card.name} collectible card artwork`} fill sizes="(max-width: 760px) 45vw, 240px" />
+              <span>{card.rarity}</span>
+            </article>
+          ))}
+          <div className="card-fan__spark card-fan__spark--one">✦</div>
+          <div className="card-fan__spark card-fan__spark--two">✦</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GamePreview() {
+  return (
+    <section id="flip-three" className="world-section game-section">
+      <div className="estate-container">
+        <div className="game-stage">
+          <div className="game-stage__city" />
+          <div className="game-stage__heading">
+            <Kicker tone="pink">Manchester warzone • arena preview</Kicker>
+            <h2>Flip <strong>Three</strong></h2>
+            <p>Read the hand. Read the rival. Own the moment.</p>
+          </div>
+          <div className="game-stage__table">
+            <div className="fighter fighter--left">
+              <div className="fighter__head"><i /><i /></div>
+              <span>Estate player</span>
+              <strong>100 HP</strong>
+            </div>
+            <div id="deck" className="flip-hand" aria-label="Three card hand preview">
+              {[1, 2, 3].map((card) => (
+                <div className="flip-card" key={card}>
+                  <span>F3</span>
+                  <InfinityMark />
+                  <small>Flip to reveal</small>
+                </div>
+              ))}
+            </div>
+            <div className="fighter fighter--right">
+              <div className="fighter__head"><i /><i /></div>
+              <span>Street rival</span>
+              <strong>100 HP</strong>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="story" className="px-5 py-24 bg-[#080808]">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-          <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-zinc-800 via-purple-950 to-black p-8 card-glow">
-            <p className="text-yellow-400 uppercase tracking-[0.3em] font-bold">Founder Story</p>
-            <h2 className="mt-4 text-4xl md:text-6xl font-black uppercase">CastroPlugger</h2>
-            <p className="mt-6 text-zinc-300 text-lg">Born from real life, pain, long nights, learning and the drive to build something different — not another faceless site.</p>
+          <div className="game-rules">
+            <span><b>1</b> Draw three</span>
+            <span><b>2</b> Attack or defend</span>
+            <span><b>3</b> Read the rival</span>
+            <span><b>4</b> Win & progress</span>
           </div>
-          <div>
-            <p className="text-yellow-400 uppercase tracking-[0.3em] font-bold">The Original Route</p>
-            <h2 className="mt-4 text-4xl md:text-6xl font-black uppercase leading-tight">From Story To Card To Community</h2>
-            <p className="mt-6 text-zinc-300 text-lg">DCBD turns information into artwork. Every card has a style, rarity, story direction and responsible adult-only wording.</p>
+          <div className="game-stage__footer">
+            <span>Game state and rewards will be server-authoritative</span>
+            <DcbdButton disabled>Arena in development</DcbdButton>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      <section id="gallery" className="px-5 py-24 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-yellow-400 uppercase tracking-[0.3em] font-bold">Integrated Artwork</p>
-          <h2 className="mt-4 text-4xl md:text-6xl font-black uppercase">The Card Wall</h2>
-          <p className="mt-5 text-zinc-400 max-w-3xl">These images are now committed inside the repo at public/images, so Vercel can deploy them with the site.</p>
-          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {cards.map((card) => <CardImage key={card.name} card={card} />)}
+function Membership() {
+  return (
+    <section id="membership" className="world-section membership-section">
+      <div className="estate-container">
+        <RivetFrame className="membership-panel">
+          <div className="membership-panel__mark"><InfinityMark /><Crown /></div>
+          <div className="membership-panel__copy">
+            <Kicker tone="gold">Your blood seat awaits</Kicker>
+            <h2>Join the<br /><em>DCBD Estate</em></h2>
+            <p>
+              Membership is the entitlement layer connecting identity, access, cards,
+              progression and community—configured centrally as benefits evolve.
+            </p>
+            <div className="membership-benefits">
+              <span>Estate profile</span>
+              <span>AI onboarding</span>
+              <span>Deck identity</span>
+              <span>Member vaults</span>
+              <span>Community access</span>
+              <span>XP benefits</span>
+            </div>
+          </div>
+          <div className="membership-panel__pass">
+            <span>DCBD Estate pass</span>
+            <InfinityMark />
+            <strong>Membership options<br />configured at launch</strong>
+            <small>No price is hard-coded in this interface.</small>
+            <DcbdButton disabled>Membership setup pending</DcbdButton>
+          </div>
+        </RivetFrame>
+      </div>
+    </section>
+  );
+}
+
+function Community() {
+  return (
+    <section id="community" className="world-section community-section">
+      <div className="estate-container community-grid">
+        <div>
+          <Kicker tone="pink">Estate radio • community layer</Kicker>
+          <h2>The world gets<br /><em>louder together.</em></h2>
+        </div>
+        <div className="community-topics">
+          <article><span>01</span><h3>Deck Lab</h3><p>Builds, strategy and Flip Three talk.</p></article>
+          <article><span>02</span><h3>Trade Floor</h3><p>Future verified card offers and exchanges.</p></article>
+          <article><span>03</span><h3>Estate Feed</h3><p>Announcements, releases and member activity.</p></article>
+        </div>
+        <div className="community-status">
+          <span className="status-light" />
+          <p><strong>Community architecture reserved</strong>Forum posting and trade actions remain disabled until authentication and server-side moderation are connected.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer id="account" className="site-footer">
+      <div className="estate-container">
+        <div className="footer-top">
+          <div className="footer-brand">
+            <Crown />
+            <strong>DCBD</strong>
+            <p>Da Coffeez Dank<br />Estate born. Future built.</p>
+          </div>
+          {footerNavigation.map((group) => (
+            <nav key={group.title} aria-label={`${group.title} links`}>
+              <h3>{group.title}</h3>
+              {group.links.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
+            </nav>
+          ))}
+          <div className="footer-contact">
+            <h3>Direct line</h3>
+            <p>Real support. Real answers.</p>
+            <a href="https://wa.me/447763383729" target="_blank" rel="noreferrer">WhatsApp the Estate <ArrowIcon /></a>
           </div>
         </div>
-      </section>
-
-      <section id="membership" className="px-5 py-24 bg-[#080808]">
-        <div className="max-w-6xl mx-auto rounded-[2rem] border border-orange-400/30 bg-black/80 p-8 md:p-12 card-glow">
-          <p className="text-orange-400 uppercase tracking-[0.3em] font-bold">Private Member Access</p>
-          <h2 className="mt-4 text-4xl md:text-6xl font-black uppercase">DCBD Inner Circle</h2>
-          <p className="mt-5 text-zinc-300 max-w-3xl">Members help influence artwork, community direction and future DCBD universe updates.</p>
+        <div className="footer-bottom">
+          <span>© 2026 DCBD. 18+ only.</span>
+          <span>Responsible information • No medical claims</span>
+          <a href="/education">Education</a>
         </div>
-      </section>
+      </div>
+    </footer>
+  );
+}
 
-      <section id="contact" className="px-5 py-24 bg-[#050505] grit-bg">
-        <div className="max-w-6xl mx-auto rounded-[2rem] border border-white/10 bg-black/80 p-8 md:p-12 card-glow">
-          <p className="text-orange-400 uppercase tracking-[0.35em] font-black">Contact & Direct Service</p>
-          <h2 className="mt-4 text-4xl md:text-6xl font-black uppercase leading-tight">Talk To ElCastroPlugged</h2>
-          <p className="mt-6 text-zinc-300 text-lg max-w-3xl">Direct support, clear communication and personal service.</p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-4">
-            <a href={`https://wa.me/${phone}?text=Hi%20ElCastroPlugged,%20I'd%20like%20to%20talk.`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-full bg-green-500 px-8 py-4 text-black font-black uppercase tracking-wide">WhatsApp</a>
-            <a href={`mailto:${email}?subject=DCBD%20Enquiry`} className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 py-4 text-white font-black uppercase tracking-wide">Email The Team</a>
-          </div>
-          <p className="mt-5 text-sm text-zinc-500">18+ only. General information only and not medical advice.</p>
-        </div>
-      </section>
+export default function Home() {
+  return (
+    <main className="dcbd-world">
+      <AgeGate />
+      <SiteHeader />
+      <Hero />
+      <Ecosystem />
+      <Vaults />
+      <Identity />
+      <Cards />
+      <GamePreview />
+      <Membership />
+      <Community />
+      <Footer />
     </main>
   );
 }
