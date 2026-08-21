@@ -1,43 +1,36 @@
-# DCBD / PluggdaCoffeezDank.uk
+# DCBD / Da Cofeez Dank
 
-This is the fast-launch storefront build.
+Connected ecosystem: shop, membership, AI onboarding, avatars, decks, Flip Three, XP, cards, trading and community. One account. One visual identity.
 
-## What is included
+## Stack
 
-- 18+ entry gate
-- Product-first ecommerce homepage
-- 52 launch product placeholders in `products.js`
-- My Stash cart
-- WhatsApp checkout
-- Stripe membership link
-- Estate Born community board mockup
-- Rookie card demo reveal
-- Card exchange rules
-- Mobile-first responsive layout
+- Next.js 14 + React + Tailwind + Framer Motion
+- Vercel-compatible (`vercel.json` forces the Next.js framework)
+- Optional Supabase for auth / ledger
+- Stripe membership checkout
+- WhatsApp product checkout with **server-side quotes**
 
-## Fast Vercel deployment
+## What is live in this build
 
-1. Open Vercel.
-2. Import this GitHub repository: `johnsingleton10000-ux/Pluggdacoffeezdank.uk`.
-3. Framework preset: Other / Static HTML.
-4. Build command: leave blank.
-5. Output directory: leave blank.
-6. Deploy.
+- Age gate and global DCBD navigation
+- Home universe (graffiti hero, vault carousel, Blood Seat dashboard)
+- Shop vaults from the existing 52-product catalogue (prices unchanged)
+- Product pages with linked collectible cards
+- Waistband / My Stash + authoritative `/api/commerce/quote`
+- Membership tiers (only Estate Born+ has a supplied £8.99 Stripe price)
+- Personality Blood Test → avatar + starter deck (language scoring, not random)
+- Collection, My Deck, Flip Three (server-resolved)
+- Estate Born community board
+- Trading state-machine scaffolding
 
-## Stripe
+## Environment
 
-Current membership checkout:
+See `.env.example`. The site runs without Supabase. Set `STRIPE_SECRET_KEY` for `/api/checkout`. Estate Born+ also has the existing hosted Stripe link.
 
-https://buy.stripe.com/8x2aEX4Kh3js3Li7S2cjS00
+## Legal
 
-Product checkout is currently via WhatsApp for quickest launch.
+18+ only. Educational product information. No medical claims. Digital cards have no cash value. Verify compliance before publishing.
 
-## Images
+## Legacy
 
-The site currently uses CSS-generated poster cards so it will deploy without broken images.
-
-To add Cloudinary images later, add an `image` field to products in `products.js`, then update the product card template in `app.js` to use the image URL.
-
-## Legal/compliance note
-
-Before publishing, every product name, product claim, payment route and delivery method must be checked against UK law, Stripe rules, Vercel rules and any applicable platform policies.
+The previous static storefront lives in `legacy/storefront/`.
