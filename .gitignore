@@ -21,3 +21,11 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+# Next.js / Node
+node_modules/
+.next/
+out/
+*.log
+.env*
+!.env.example
