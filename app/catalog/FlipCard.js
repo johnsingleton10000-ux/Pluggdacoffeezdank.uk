@@ -79,22 +79,22 @@ export default function FlipCard({ card, total }) {
           <div className="grid grid-cols-3 gap-2">
             <Stat label="Attack" value={card.attack} color="#fb7185" />
             <Stat label="Defense" value={card.defense} color="#38bdf8" />
-            <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-amber-400/30 bg-amber-400/[0.06] py-3">
-              <span className="flex items-center gap-1 text-[0.6rem] font-black uppercase tracking-[0.22em] text-amber-300">
-                <Lock /> Ability
-              </span>
-              <span className="mt-1 select-none text-base font-black uppercase leading-none text-amber-100/90 blur-[5px]" aria-hidden="true">
-                {card.ability.name}
-              </span>
-              <span className="mt-1 text-[0.5rem] font-bold uppercase tracking-[0.15em] text-amber-300/70">Locked</span>
+            <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-amber-400/40 bg-amber-400/[0.08] py-3 text-amber-300">
+              <Lock />
+              <span className="mt-1 text-[0.55rem] font-black uppercase tracking-[0.2em]">Locked</span>
             </div>
           </div>
 
-          <div className="mt-3 flex items-start gap-2 rounded-2xl border border-amber-400/20 bg-black/40 px-4 py-3">
-            <span className="mt-0.5 text-amber-300"><Lock /></span>
-            <p className="text-[0.72rem] leading-snug text-amber-100/80">
-              <span className="font-black uppercase tracking-wider text-amber-300">Hidden Ability</span>{' '}
-              — {card.ability.hint} Unlocks when the{' '}
+          <div className="mt-3 overflow-hidden rounded-2xl border border-amber-400/25 bg-black/40 px-4 py-3">
+            <p className="flex items-center gap-1.5 text-[0.62rem] font-black uppercase tracking-[0.24em] text-amber-300">
+              <Lock /> Hidden Ability
+              <span className="ml-auto rounded-full border border-amber-400/40 px-2 py-0.5 text-[0.5rem] tracking-[0.18em]">Locked</span>
+            </p>
+            <p className="mt-2 select-none text-sm font-semibold italic leading-snug text-amber-100/90 blur-[6px]" aria-hidden="true">
+              “{card.ability.name}” — {card.ability.hint}
+            </p>
+            <p className="mt-2 text-[0.68rem] leading-snug text-amber-200/70">
+              Concealed for now — unlocks when the{' '}
               <span className="font-black text-amber-200">Flip Three</span> game system goes live.
             </p>
           </div>

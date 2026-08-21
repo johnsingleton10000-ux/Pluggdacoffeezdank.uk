@@ -5,7 +5,8 @@
 // the wider DCBD universe. Attack / Defense are hand-balanced from each
 // product's character (bright/bold profiles lean offensive; reserve/cream/ice
 // profiles lean defensive) rather than randomly assigned. The Special Ability
-// is intentionally concealed until the Flip Three game layer unlocks it.
+// is intentionally concealed until the Flip Three game layer unlocks it, so the
+// UI renders `ability.hint` blurred/locked.
 
 export const TIERS = {
   common: { label: 'COMMON', grade: 'C', accent: '#a3a3a3', ring: 'border-zinc-500/40' },
@@ -22,7 +23,7 @@ export const CATALOG = [
     flavour: 'Pine resin, sea salt air and a cool lemon edge.',
     characteristics: ['Cliffside pine', 'Coastal cool', 'Anchor-grade'],
     attack: 71, defense: 94,
-    ability: { name: 'Tidewall', hint: 'Turns the ▓▓▓▓ round into unbroken defence.' },
+    ability: { name: 'Tidewall', hint: 'Turns one round into an unbreakable defensive wall.' },
     art: { colorA: '#38bdf8', colorB: '#0c4a6e', motif: 'wave' },
   },
   {
@@ -31,7 +32,7 @@ export const CATALOG = [
     flavour: 'Earthy pine, warm lemon and golden citrus.',
     characteristics: ['Golden reserve', 'First-strike', 'Sun-cured'],
     attack: 90, defense: 66,
-    ability: { name: 'Goldrush', hint: 'Banks ▓▓ extra pressure while ahead.' },
+    ability: { name: 'Goldrush', hint: 'Banks extra pressure while your card is ahead.' },
     art: { colorA: '#f1be48', colorB: '#78350f', motif: 'orbs' },
   },
   {
@@ -40,7 +41,7 @@ export const CATALOG = [
     flavour: 'Mango, pineapple and bright golden coast.',
     characteristics: ['Tropic bright', 'High tempo', 'Coast-forged'],
     attack: 93, defense: 61,
-    ability: { name: 'Sunbreak', hint: 'Cracks a defender once per ▓▓▓▓▓▓.' },
+    ability: { name: 'Sunbreak', hint: 'Cracks an enemy guard once per battle.' },
     art: { colorA: '#f97316', colorB: '#431407', motif: 'poster' },
   },
   {
@@ -49,7 +50,7 @@ export const CATALOG = [
     flavour: 'Lemon, garden herbs and cool coastal mist.',
     characteristics: ['Misty haze', 'Balanced heavy', 'Reserve-grade'],
     attack: 88, defense: 74,
-    ability: { name: 'Mistveil', hint: 'Hides your true ▓▓▓▓▓ from the AI read.' },
+    ability: { name: 'Mistveil', hint: 'Hides your true stats from the opponent read.' },
     art: { colorA: '#14b8a6', colorB: '#052e2b', motif: 'mist' },
   },
   {
@@ -58,7 +59,7 @@ export const CATALOG = [
     flavour: 'Pineapple, citrus and sharp diesel bite.',
     characteristics: ['Diesel bite', 'Glass cannon', 'Overdrive'],
     attack: 95, defense: 52,
-    ability: { name: 'Overclock', hint: 'Spends defence to double a ▓▓▓▓ hit.' },
+    ability: { name: 'Overclock', hint: 'Spends defence to double a single attack.' },
     art: { colorA: '#facc15', colorB: '#3f2d02', motif: 'orbs' },
   },
   {
@@ -67,7 +68,7 @@ export const CATALOG = [
     flavour: 'Ripe mango, cream and crystalline sweetness.',
     characteristics: ['Diamond-cut', 'All-rounder', 'Premium'],
     attack: 84, defense: 80,
-    ability: { name: 'Facet', hint: 'Reflects a portion of ▓▓▓▓▓▓ damage back.' },
+    ability: { name: 'Facet', hint: 'Reflects part of incoming damage back at the attacker.' },
     art: { colorA: '#fb923c', colorB: '#3b0764', motif: 'crystal' },
   },
   {
@@ -76,7 +77,7 @@ export const CATALOG = [
     flavour: 'Dragonfruit, dark berry and sticky resin.',
     characteristics: ['Sticky resin', 'Lockdown', 'Control'],
     attack: 69, defense: 90,
-    ability: { name: 'Bloomlock', hint: 'Freezes an enemy ▓▓▓▓▓▓▓ for one round.' },
+    ability: { name: 'Bloomlock', hint: 'Freezes an enemy ability for one full round.' },
     art: { colorA: '#ec4899', colorB: '#500724', motif: 'orbs' },
   },
   {
@@ -85,7 +86,7 @@ export const CATALOG = [
     flavour: 'Blueberry, sugar and slow smooth melt.',
     characteristics: ['Cool melt', 'Forgiving', 'Frost guard'],
     attack: 63, defense: 88,
-    ability: { name: 'Deepfreeze', hint: 'Slows the opponent ▓▓▓▓▓ queue.' },
+    ability: { name: 'Deepfreeze', hint: 'Slows the opponent next queued card.' },
     art: { colorA: '#3b82f6', colorB: '#0b1e3f', motif: 'wave' },
   },
   {
@@ -94,7 +95,7 @@ export const CATALOG = [
     flavour: 'Sweet berry, citrus and coastal sunset.',
     characteristics: ['Sunset sweet', 'Even split', 'Flex pick'],
     attack: 77, defense: 78,
-    ability: { name: 'Afterglow', hint: 'Restores guard when you ▓▓▓ a round.' },
+    ability: { name: 'Afterglow', hint: 'Restores guard whenever you win a round.' },
     art: { colorA: '#fb7185', colorB: '#4a044e', motif: 'poster' },
   },
   {
@@ -103,7 +104,7 @@ export const CATALOG = [
     flavour: 'Lavender, sweet berry and salt breeze.',
     characteristics: ['Fortress', 'Late-game', 'Calm'],
     attack: 58, defense: 92,
-    ability: { name: 'Lullwake', hint: 'Softens every incoming ▓▓▓▓▓▓.' },
+    ability: { name: 'Lullwake', hint: 'Softens every incoming attack late in the match.' },
     art: { colorA: '#a78bfa', colorB: '#1e1b4b', motif: 'mist' },
   },
   {
@@ -112,7 +113,7 @@ export const CATALOG = [
     flavour: 'Sandalwood, black pepper and aged spice.',
     characteristics: ['Relic reserve', 'Near-immovable', 'Aged'],
     attack: 66, defense: 96,
-    ability: { name: 'Relic Seal', hint: 'One round it simply ▓▓▓▓▓▓ be broken.' },
+    ability: { name: 'Relic Seal', hint: 'For one round, this card simply cannot be broken.' },
     art: { colorA: '#a16207', colorB: '#050505', motif: 'ball' },
   },
   {
@@ -121,7 +122,7 @@ export const CATALOG = [
     flavour: 'Dark chocolate, earth and heavy cream.',
     characteristics: ['Heritage', 'Creamy base', 'Grounded'],
     attack: 60, defense: 89,
-    ability: { name: 'Old Earth', hint: 'Roots your card against ▓▓▓▓▓▓ effects.' },
+    ability: { name: 'Old Earth', hint: 'Roots the card against control effects.' },
     art: { colorA: '#7f5539', colorB: '#1c1006', motif: 'ball' },
   },
   {
@@ -130,7 +131,7 @@ export const CATALOG = [
     flavour: 'Sweet dessert, vanilla and smooth depth.',
     characteristics: ['Founder drop', 'Ceremonial', 'Two-way'],
     attack: 72, defense: 84,
-    ability: { name: 'Vow', hint: 'Bonds two cards to share ▓▓▓▓▓▓▓.' },
+    ability: { name: 'Vow', hint: 'Bonds two cards so they share strength.' },
     art: { colorA: '#f9a8d4', colorB: '#500724', motif: 'poster' },
   },
   {
@@ -139,7 +140,7 @@ export const CATALOG = [
     flavour: 'Green apple, gas and sharp collector edge.',
     characteristics: ['Apple gas', 'Overreach', 'Aggressive'],
     attack: 86, defense: 63,
-    ability: { name: 'Fault Line', hint: 'Splits an enemy guard along a ▓▓▓▓▓.' },
+    ability: { name: 'Fault Line', hint: 'Splits an enemy guard along a hidden weak point.' },
     art: { colorA: '#16a34a', colorB: '#052e16', motif: 'crystal' },
   },
   {
@@ -148,7 +149,7 @@ export const CATALOG = [
     flavour: 'Bold tropical fruit and wild green notes.',
     characteristics: ['Graffiti wild', 'Fast strike', 'Tropical'],
     attack: 89, defense: 58,
-    ability: { name: 'Ambush', hint: 'Strikes before the ▓▓▓▓▓ resolves.' },
+    ability: { name: 'Ambush', hint: 'Strikes before the round formally resolves.' },
     art: { colorA: '#22c55e', colorB: '#052e16', motif: 'canopy' },
   },
   {
@@ -157,7 +158,7 @@ export const CATALOG = [
     flavour: 'Sweet mango, citrus and smooth tropics.',
     characteristics: ['Tropical', 'Beginner-friendly', 'Lively'],
     attack: 74, defense: 62,
-    ability: { name: 'Sweet Static', hint: 'A tiny ▓▓▓▓ jolt each opening turn.' },
+    ability: { name: 'Sweet Static', hint: 'Adds a small jolt of attack on the opening turn.' },
     art: { colorA: '#ff9f1c', colorB: '#3f1d02', motif: 'orbs' },
   },
   {
@@ -166,7 +167,7 @@ export const CATALOG = [
     flavour: 'Grape, berry and soft floral haze.',
     characteristics: ['Iconic haze', 'Wildcard', 'Ability-first'],
     attack: 80, defense: 70,
-    ability: { name: 'Purple Fog', hint: 'Blurs the AI read of your ▓▓▓▓.' },
+    ability: { name: 'Purple Fog', hint: 'Blurs the AI read of your chosen move.' },
     art: { colorA: '#8e38ff', colorB: '#1e1b4b', motif: 'mist' },
   },
   {
@@ -175,7 +176,7 @@ export const CATALOG = [
     flavour: 'Dark berry with a cool city-night profile.',
     characteristics: ['City-night', 'Steady', 'Support'],
     attack: 64, defense: 83,
-    ability: { name: 'Nightshade', hint: 'Draws a sliver of enemy ▓▓▓▓▓▓ each round.' },
+    ability: { name: 'Nightshade', hint: 'Draws a sliver of enemy strength each round.' },
     art: { colorA: '#7c3aed', colorB: '#0b0221', motif: 'orbs' },
   },
   {
@@ -184,7 +185,7 @@ export const CATALOG = [
     flavour: 'Cherry cola with sweet fizzy bite.',
     characteristics: ['Fizzy', 'Punchy', 'Starter'],
     attack: 78, defense: 55,
-    ability: { name: 'Fizzbomb', hint: 'Pops for burst ▓▓▓▓▓▓ then fades.' },
+    ability: { name: 'Fizzbomb', hint: 'Pops for burst damage, then quickly fades.' },
     art: { colorA: '#dc2626', colorB: '#3f0708', motif: 'poster' },
   },
   {
@@ -193,7 +194,7 @@ export const CATALOG = [
     flavour: 'Blue raspberry sweet-shop rush.',
     characteristics: ['Sweet-shop', 'Quick pressure', 'Budget'],
     attack: 82, defense: 60,
-    ability: { name: 'Burstline', hint: 'Chains a second hit on a ▓▓▓ streak.' },
+    ability: { name: 'Burstline', hint: 'Chains a second hit while on a winning streak.' },
     art: { colorA: '#38bdf8', colorB: '#082f49', motif: 'wave' },
   },
 ];
