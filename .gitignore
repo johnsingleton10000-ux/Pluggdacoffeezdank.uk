@@ -14,6 +14,9 @@
 *.app
 #Rapid Application Development File
 rad.json
+#Node / Next build output
+node_modules/
+.next/
 #Translation Base-file
 *.g.xlf
 #License-files
