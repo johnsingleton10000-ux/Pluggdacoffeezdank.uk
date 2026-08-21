@@ -5,6 +5,9 @@ export async function POST() {
     if (!process.env.STRIPE_SECRET_KEY) {
       return Response.json({ error: "Missing STRIPE_SECRET_KEY in Vercel environment variables." }, { status: 500 });
     }
+    if (!process.env.STRIPE_MEMBERSHIP_PRICE_ID) {
+      return Response.json({ error: "Missing STRIPE_MEMBERSHIP_PRICE_ID in Vercel environment variables." }, { status: 500 });
+    }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pluggdacoffeezdank.uk";
@@ -14,14 +17,7 @@ export async function POST() {
       payment_method_types: ["card"],
       line_items: [
         {
-          price_data: {
-            currency: "gbp",
-            product_data: {
-              name: "DCBD Inner Circle Founder Entry",
-              description: "Community membership, early art previews, private updates and future rewards.",
-            },
-            unit_amount: 2500,
-          },
+          price: process.env.STRIPE_MEMBERSHIP_PRICE_ID,
           quantity: 1,
         },
       ],
