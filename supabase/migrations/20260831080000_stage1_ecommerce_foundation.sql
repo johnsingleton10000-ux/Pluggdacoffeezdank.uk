@@ -170,7 +170,7 @@ create table public.payments (
   id uuid primary key default gen_random_uuid(),
   order_id uuid not null references public.orders (id) on delete restrict,
   provider text not null default 'TRUELAYER',
-  provider_payment_id text unique,
+  provider_payment_id text,
   amount numeric(10, 2) not null,
   currency varchar(3) not null default 'GBP',
   status public.payment_status not null default 'PENDING',
@@ -188,7 +188,7 @@ comment on column public.payments.provider_payment_id is
 create table public.payment_events (
   id uuid primary key default gen_random_uuid(),
   payment_id uuid not null references public.payments (id) on delete cascade,
-  provider_event_id text unique,
+  provider_event_id text,
   event_type text not null,
   payload_hash varchar(64),
   processed boolean not null default false,
